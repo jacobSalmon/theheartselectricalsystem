@@ -1008,34 +1008,7 @@ function VideoPage({ lang = "da" }) {
 function AboutPage({ lang = "da" }) {
   return (
     <>
-<section style={{ background: "var(--cyan-400)", color: "var(--ink-900)", padding: "56px var(--gutter)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36, alignItems: "center" }}>
-        <div>
-          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 44, letterSpacing: "-0.03em", textTransform: "uppercase", lineHeight: 0.98, margin: 0 }}>
-            {lang === "da" ? "Modtag nyhedsbrev" : "Get the newsletter"}
-          </h2>
-          <p style={{ fontSize: 16, lineHeight: 1.55, margin: "14px 0 0", maxWidth: "34ch" }}>
-            {lang === "da" ? "Vi skriver kun når der er noget nyt: udgivelser, videoer og koncerter." : "We only write when there is something new: releases, videos and shows."}
-          </p>
-        </div>
-        <form
-          action={"mailto:" + BOOKING.email}
-          method="post"
-          encType="text/plain"
-          style={{ display: "flex", gap: 12, flexWrap: "wrap" }}
-        >
-          <Input
-            onLight={true}
-            type="email"
-            name="email"
-            required
-            placeholder={lang === "da" ? "Din e-mail" : "Your email"}
-            aria-label={lang === "da" ? "Din e-mail" : "Your email"}
-          />
-          <Button variant="warm" type="submit">{lang === "da" ? "Tilmeld" : "Sign up"}</Button>
-        </form>
-      </section>
-
-      <MediaWell src={MEDIA.pressPhoto} position="center 35%" height={460} background="var(--ink-700)" play={false} rule>
+<MediaWell src={MEDIA.pressPhoto} position="center 35%" height={460} background="var(--ink-700)" play={false} rule>
         <SectionHeading size="l" as="h1" eyebrow={lang === "da" ? "Om bandet" : "About"}>
           {lang === "da" ? "Når maskine og menneske slår i takt" : "Where machine and human fall into step"}
         </SectionHeading>
@@ -1209,7 +1182,35 @@ function BookingPage({ lang = "da" }) {
 function SiteFooter({ lang = "da" }) {
   return (
     <footer style={{ borderTop: "1px solid var(--border-hairline)", padding: "30px var(--gutter) 26px" }}>
-      <SocialRail style={{ position: "static", width: "auto", flexDirection: "row", gap: 22 }} />
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 28, flexWrap: "wrap" }}>
+        <SocialRail style={{ position: "static", width: "auto", flexDirection: "row", gap: 22 }} />
+        <form
+          action={"mailto:" + BOOKING.email}
+          method="post"
+          encType="text/plain"
+          style={{ display: "flex", alignItems: "center", gap: 12 }}
+        >
+          <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", opacity: 0.6 }}>
+            {lang === "da" ? "Nyhedsbrev" : "Newsletter"}
+          </span>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder={lang === "da" ? "Din e-mail" : "Your email"}
+            aria-label={lang === "da" ? "Tilmeld dig nyhedsbrevet" : "Sign up for the newsletter"}
+            style={{ background: "transparent", border: 0, borderBottom: "1px solid rgba(247,242,234,0.28)", color: "var(--cream-100)", fontFamily: "var(--font-body)", fontSize: 14, padding: "5px 2px", width: 180, outline: "none" }}
+          />
+          <button
+            type="submit"
+            style={{ background: "transparent", border: "1px solid rgba(247,242,234,0.28)", color: "var(--cream-100)", fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.1em", textTransform: "uppercase", padding: "6px 12px", cursor: "pointer", transition: "background var(--dur) var(--ease), color var(--dur) var(--ease)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = "var(--orange-500)"; e.currentTarget.style.color = "var(--ink-900)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = "var(--cream-100)"; }}
+          >
+            {lang === "da" ? "Tilmeld" : "Sign up"}
+          </button>
+        </form>
+      </div>
       <div style={{ display: "flex", justifyContent: "space-between", gap: 20, flexWrap: "wrap", marginTop: 26, fontFamily: "var(--font-mono)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", opacity: 0.6 }}>
         <span>© 2026 The Heart's Electrical System</span>
         <span>{BOOKING.email} · {BOOKING.phone}</span>
