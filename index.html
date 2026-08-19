@@ -1,0 +1,1210 @@
+<!-- @dsCard group="Website" viewport="1280x760" name="thehearts.dk" subtitle="Otte sider — Live Current v.2" -->
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<title>The Heart's Electrical System</title>
+<style>
+/* tokens/fonts.css */
+/* Webfonts. Archivo, Karla and JetBrains Mono are all open-source and served
+   from Google Fonts. No licensed brand font was supplied. */
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=Karla:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap");
+
+/* tokens/colors.css */
+:root {
+  /* Base ramp — warm near-blacks, the room the site lives in */
+  --ink-900: #1A1512;
+  --ink-800: #2A221C;
+  --ink-700: #3B2E24;
+
+  /* Media wells — the flat colour standing in for video and photography */
+  --well-video: #123244;
+  --well-clip: #1E3A4A;
+
+  /* Accents */
+  --orange-500: #FF7A2F;
+  --cyan-400: #2FC2E8;
+
+  /* Light */
+  --cream-100: #F7F2EA;
+
+  /* ---- Semantic ---- */
+  --bg-page: var(--ink-900);
+  --bg-raised: var(--ink-800);
+  /* The cool counterpart to --bg-raised — same job, colder room */
+  --bg-raised-cool: var(--well-video);
+  --bg-well: var(--ink-700);
+  --bg-inverse: var(--cream-100);
+  --bg-accent-warm: var(--orange-500);
+  --bg-accent-cool: var(--cyan-400);
+
+  --text-primary: var(--cream-100);
+  --text-muted: rgba(247, 242, 234, 0.8);
+  --text-quiet: rgba(247, 242, 234, 0.6);
+  --text-on-accent: var(--ink-900);
+  --text-on-inverse: var(--ink-900);
+  --text-label-cool: var(--cyan-400);
+  --text-label-warm: var(--orange-500);
+
+  --border-strong: var(--cream-100);
+  --border-on-light: var(--ink-900);
+  --border-hairline: rgba(247, 242, 234, 0.12);
+}
+
+/* tokens/typography.css */
+:root {
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Karla", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+  /* Pull quotes only — a review, never body copy or headlines */
+  --font-quote: "Instrument Serif", Georgia, serif;
+
+  --weight-display: 800;
+  --weight-bold: 700;
+  --weight-regular: 400;
+
+  /* Display — always uppercase, always negative tracking */
+  --display-xl-size: 88px;   --display-xl-lh: 0.9;   --display-xl-track: -0.035em;
+  --display-l-size: 46px;    --display-l-lh: 1;      --display-l-track: -0.03em;
+  --display-m-size: 40px;    --display-m-lh: 0.98;   --display-m-track: -0.03em;
+  --display-s-size: 34px;    --display-s-lh: 1;      --display-s-track: -0.03em;
+  --display-xs-size: 24px;   --display-xs-lh: 1.1;   --display-xs-track: -0.01em;
+  --display-nav-size: 16px;  --display-nav-track: -0.01em;
+
+  /* Body — Karla, sentence case, never uppercase */
+  --body-l-size: 16px;  --body-l-lh: 1.5;
+  --body-m-size: 15px;  --body-m-lh: 1.55;
+  --body-s-size: 14px;  --body-s-lh: 1.5;
+
+  /* Mono — labels, captions, metadata. Uppercase, wide tracking */
+  --mono-l-size: 12px;  --mono-l-track: 0.16em;
+  --mono-m-size: 12px;  --mono-m-track: 0.1em;
+  --mono-s-size: 11px;  --mono-s-track: 0.08em;
+
+  /* Pull quote */
+  --quote-size: 34px;  --quote-lh: 1.22;  --quote-track: -0.01em;
+
+  /* Action labels — uppercase Karla bold */
+  --action-size: 14px;  --action-track: 0.06em;
+}
+
+/* tokens/spacing.css */
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 14px;
+  --space-5: 18px;
+  --space-6: 22px;
+  --space-7: 26px;
+  --space-8: 30px;
+  --space-9: 36px;
+
+  /* Section rhythm */
+  --gutter: 26px;          /* every full-bleed section's horizontal padding */
+  --section-y: 90px;       /* standard vertical padding */
+  --section-y-tight: 80px; /* used on the coloured bands */
+  --band-y: 20px;          /* the marquee band */
+
+  /* Media wells */
+  --hero-h: 580px;
+  --photo-h: 460px;
+  --clip-h: 400px;
+
+  --measure-display: 22ch;
+  --measure-body: 44ch;
+  --measure-lede: 40ch;
+}
+
+/* tokens/borders.css */
+:root {
+  /* Nothing is rounded. Ever. */
+  --radius: 0;
+
+  --border-width: 2px;      /* outlined buttons, inputs */
+  --border-rule: 3px;       /* the orange rule under the press photo */
+  --border-hair: 1px;
+
+  /* No shadow system: depth comes from value jumps between blocks. */
+  --shadow-none: none;
+
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --dur-fast: 120ms;
+  --dur: 180ms;
+}
+
+</style>
+<style>
+  html,body{margin:0;padding:0}
+  body{background:var(--ink-900);color:var(--cream-100);font-family:var(--font-body)}
+  a{color:inherit;text-decoration:none}
+  a:hover{color:var(--orange-500)}
+  button{font:inherit}
+</style>
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<!--
+  Generated from the real sources in components/ and ui_kits/website/.
+  Change a component, then regenerate this file rather than editing it here.
+-->
+<script type="text/plain" id="src">
+
+function MonoLabel({ tone = "cool", wide = false, style, children, ...rest }) {
+  const colors = { cool: "var(--cyan-400)", warm: "var(--orange-500)", quiet: "var(--text-quiet)", plain: "inherit" };
+  return (
+    <div
+      style={{
+        fontFamily: "var(--font-mono)",
+        fontSize: wide ? 12 : 11,
+        letterSpacing: wide ? "0.16em" : "0.08em",
+        textTransform: "uppercase",
+        color: colors[tone],
+        ...style,
+      }}
+      {...rest}
+    >
+      {children}
+    </div>
+  );
+}
+
+
+
+const btnBase = {
+  fontFamily: "var(--font-body)",
+  fontWeight: 700,
+  fontSize: "var(--action-size)",
+  letterSpacing: "var(--action-track)",
+  textTransform: "uppercase",
+  borderRadius: 0,
+  cursor: "pointer",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  textDecoration: "none",
+  transition: "background var(--dur) var(--ease), color var(--dur) var(--ease)",
+};
+
+const btnSizes = {
+  md: { padding: "16px 24px" },
+  sm: { padding: "12px 18px" },
+};
+
+const btnVariants = {
+  warm: { background: "var(--orange-500)", color: "var(--ink-900)", border: "2px solid var(--orange-500)" },
+  cream: { background: "var(--cream-100)", color: "var(--ink-900)", border: "2px solid var(--cream-100)" },
+  ink: { background: "var(--ink-900)", color: "var(--cream-100)", border: "2px solid var(--ink-900)" },
+  outline: { background: "transparent", color: "var(--cream-100)", border: "2px solid var(--cream-100)" },
+  outlineInk: { background: "transparent", color: "var(--ink-900)", border: "2px solid var(--ink-900)" },
+};
+
+function Button({ variant = "warm", size = "md", href, disabled, style, children, ...rest }) {
+  const Tag = href ? "a" : "button";
+  return (
+    <Tag
+      href={href}
+      disabled={Tag === "button" ? disabled : undefined}
+      style={{
+        ...btnBase,
+        ...btnSizes[size],
+        ...btnVariants[variant],
+        opacity: disabled ? 0.4 : 1,
+        pointerEvents: disabled ? "none" : undefined,
+        ...style,
+      }}
+      {...rest}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+
+
+function IconButton({ label, size = 26, quiet = true, style, children, ...rest }) {
+  return (
+    <a
+      title={label}
+      aria-label={label}
+      style={{
+        width: size,
+        height: size,
+        flexShrink: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "var(--cream-100)",
+        opacity: quiet ? 0.55 : 1,
+        transition: "opacity var(--dur) var(--ease)",
+        ...style,
+      }}
+      onMouseEnter={(e) => (e.currentTarget.style.opacity = 1)}
+      onMouseLeave={(e) => (e.currentTarget.style.opacity = quiet ? 0.55 : 1)}
+      {...rest}
+    >
+      {children}
+    </a>
+  );
+}
+
+
+
+function Input({ onLight = true, style, ...rest }) {
+  return (
+    <input
+      style={{
+        flex: 1,
+        minWidth: 0,
+        background: "var(--cream-100)",
+        color: "var(--ink-900)",
+        border: `2px solid ${onLight ? "var(--ink-900)" : "var(--cream-100)"}`,
+        borderRadius: 0,
+        padding: "16px 18px",
+        fontFamily: "var(--font-body)",
+        fontSize: 15,
+        outline: "none",
+        ...style,
+      }}
+      {...rest}
+    />
+  );
+}
+
+
+
+function Badge({ tone = "cyan", style, children, ...rest }) {
+  const tones = {
+    cyan: { background: "var(--cyan-400)", color: "var(--ink-900)" },
+    orange: { background: "var(--orange-500)", color: "var(--ink-900)" },
+    quiet: { background: "transparent", color: "var(--text-quiet)" },
+  };
+  return (
+    <span
+      style={{
+        fontFamily: "var(--font-mono)",
+        fontSize: 11,
+        letterSpacing: "0.08em",
+        textTransform: "uppercase",
+        padding: "3px 8px",
+        borderRadius: 0,
+        ...tones[tone],
+        ...style,
+      }}
+      {...rest}
+    >
+      {children}
+    </span>
+  );
+}
+
+
+
+function Card({ selected = false, onLight = false, as = "div", style, children, ...rest }) {
+  const Tag = as;
+  const line = onLight ? "var(--ink-900)" : "var(--cream-100)";
+  return (
+    <Tag
+      style={{
+        background: selected ? (onLight ? "var(--ink-900)" : "var(--cream-100)") : "transparent",
+        color: selected ? (onLight ? "var(--cream-100)" : "var(--ink-900)") : "inherit",
+        border: `2px solid ${line}`,
+        borderRadius: 0,
+        boxShadow: "none",
+        padding: "16px 22px",
+        fontFamily: "var(--font-body)",
+        textAlign: "left",
+        cursor: onLight || rest.onClick ? "pointer" : "default",
+        display: "flex",
+        flexDirection: "column",
+        gap: 4,
+        transition: "background var(--dur) var(--ease), color var(--dur) var(--ease)",
+        ...style,
+      }}
+      {...rest}
+    >
+      {children}
+    </Tag>
+  );
+}
+
+
+
+const headingSizes = {
+  xl: { fontSize: 88, lineHeight: 0.9, letterSpacing: "-0.035em" },
+  l: { fontSize: 46, lineHeight: 1, letterSpacing: "-0.03em" },
+  m: { fontSize: 40, lineHeight: 0.98, letterSpacing: "-0.03em" },
+  s: { fontSize: 34, lineHeight: 1, letterSpacing: "-0.03em" },
+};
+
+function SectionHeading({ eyebrow, lede, size = "m", as = "h2", style, children }) {
+  const Tag = as;
+  const { whiteSpace, ...wrapStyle } = style || {};
+  return (
+    <div style={wrapStyle}>
+      {eyebrow ? <MonoLabel wide style={{ marginBottom: 10 }}>{eyebrow}</MonoLabel> : null}
+      <Tag
+        style={{
+          fontFamily: "var(--font-display)",
+          fontWeight: 800,
+          textTransform: "uppercase",
+          margin: 0,
+          maxWidth: "22ch",
+          ...headingSizes[size],
+          whiteSpace,
+        }}
+      >
+        {children}
+      </Tag>
+      {lede ? (
+        <p style={{ fontFamily: "var(--font-body)", fontSize: 16, lineHeight: 1.5, opacity: 0.8, margin: "18px 0 0", maxWidth: "44ch" }}>
+          {lede}
+        </p>
+      ) : null}
+    </div>
+  );
+}
+
+
+
+const wrap = (children, filled) => (
+  <svg width="26" height="26" viewBox="0 0 24 24" fill={filled ? "currentColor" : "none"} stroke={filled ? "none" : "currentColor"} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    {children}
+  </svg>
+);
+
+const InstagramIcon = () => wrap(<><rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4.2" /><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none" /></>, false);
+const FacebookIcon = () => wrap(<path d="M13.5 21v-7.3h2.5l.4-2.9h-2.9V8.9c0-.8.2-1.4 1.4-1.4h1.6V4.9c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9v2.1H8v2.9h2.4V21h3.1z" />, true);
+const YouTubeIcon = () => wrap(<path d="M21.6 7.6c-.2-.9-.9-1.6-1.8-1.8C18.2 5.4 12 5.4 12 5.4s-6.2 0-7.8.4c-.9.2-1.6.9-1.8 1.8C2 9.2 2 12 2 12s0 2.8.4 4.4c.2.9.9 1.6 1.8 1.8 1.6.4 7.8.4 7.8.4s6.2 0 7.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.6.4-4.4.4-4.4s0-2.8-.4-4.4zM10 15.1V8.9l5.2 3.1-5.2 3.1z" />, true);
+const SpotifyIcon = () => wrap(<><circle cx="12" cy="12" r="9.2" /><path d="M7.4 9.4c3-.8 6.2-.5 8.8.9" /><path d="M8 12.6c2.5-.7 5.1-.4 7.3.8" /><path d="M8.6 15.6c2-.5 4.1-.3 5.9.7" /></>, false);
+const AppleMusicIcon = () => wrap(<><circle cx="7.5" cy="17" r="2.6" /><circle cx="17" cy="15" r="2.6" /><path d="M10.1 17V8.2l9.5-1.9V15" /><path d="M10.1 11.3l9.5-1.9" /></>, false);
+const ShopIcon = () => wrap(<><path d="M2.5 4h2.2l2.1 10.2a1.6 1.6 0 0 0 1.6 1.3h8.3a1.6 1.6 0 0 0 1.6-1.3L19.8 7H6.1" /><circle cx="9.5" cy="19.3" r="1.5" /><circle cx="17" cy="19.3" r="1.5" /></>, false);
+
+
+
+const DEFAULT = [
+  { label: "Instagram", Icon: InstagramIcon, href: "https://www.instagram.com/theheartselectricalsystem" },
+  { label: "Facebook", Icon: FacebookIcon, href: "https://www.facebook.com/theheartselectricalsystem" },
+  { label: "YouTube", Icon: YouTubeIcon, href: "https://youtu.be/u4jp5a-4Uwc" },
+  { label: "Spotify", Icon: SpotifyIcon, href: "https://open.spotify.com/artist/6yQUwki6MKWvhkyoh8tzuA" },
+  { label: "Shop", Icon: ShopIcon, href: "https://gatewaymusicshop.dk/da/vinyl/WeDreaminLowFidelity-vinyl" },
+];
+
+function SocialRail({ items = DEFAULT, fixed = false, style }) {
+  return (
+    <div
+      style={{
+        position: fixed ? "fixed" : "absolute",
+        right: 22,
+        bottom: fixed ? undefined : 30,
+        top: fixed ? "50%" : undefined,
+        transform: fixed ? "translateY(-50%)" : undefined,
+        width: 26,
+        zIndex: 20,
+        display: "flex",
+        flexDirection: "column",
+        gap: 18,
+        ...style,
+      }}
+    >
+      {items.map(({ label, Icon, href }) => (
+        <IconButton key={label} label={label} href={href || "#"} target="_blank" rel="noreferrer">
+          <Icon />
+        </IconButton>
+      ))}
+    </div>
+  );
+}
+
+
+
+function SiteHeader({ lang = "da", page = "forside", nav = [], onNav, onLang, style }) {
+  return (
+    <header
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        gap: 16,
+        padding: "10px var(--gutter)",
+        background: "var(--cream-100)",
+        color: "var(--ink-900)",
+        position: "sticky",
+        top: 0,
+        zIndex: 30,
+        ...style,
+      }}
+    >
+      <a
+        href="#"
+        onClick={(e) => { e.preventDefault(); onNav && onNav("forside"); }}
+        style={{ display: "flex", alignItems: "center", color: "inherit", textDecoration: "none", flexShrink: 0 }}
+        aria-label="The Heart's Electrical System"
+      >
+        <img src="assets/logo-ink.png" alt="The Heart's Electrical System" style={{ height: 55, width: "auto", display: "block" }} />
+      </a>
+      <nav style={{ display: "flex", alignItems: "center", gap: 16, fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+        {nav.map((item) => (
+          <a
+            key={item.id}
+            href={"#" + item.id}
+            onClick={(e) => { e.preventDefault(); onNav && onNav(item.id); }}
+            style={{
+              color: "inherit",
+              textDecoration: "none",
+              whiteSpace: "nowrap",
+              paddingBottom: 2,
+              borderBottom: page === item.id ? "2px solid var(--orange-500)" : "2px solid transparent",
+            }}
+          >
+            {item.label[lang]}
+          </a>
+        ))}
+        <span style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
+          {[
+            { label: "Instagram", href: "https://www.instagram.com/theheartselectricalsystem", Icon: InstagramIcon },
+            { label: "Spotify", href: "https://open.spotify.com/artist/6yQUwki6MKWvhkyoh8tzuA", Icon: SpotifyIcon },
+          ].map(({ label, href, Icon }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              title={label}
+              aria-label={label}
+              style={{ display: "flex", width: 20, height: 20, color: "inherit", opacity: 0.55, transition: "opacity var(--dur) var(--ease)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.opacity = 1)}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = 0.55)}
+            >
+              <span style={{ display: "flex", transform: "scale(0.77)", transformOrigin: "top left" }}><Icon /></span>
+            </a>
+          ))}
+        </span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 11, letterSpacing: "0.08em", cursor: "pointer", flexShrink: 0 }} onClick={onLang}>
+          <b style={{ opacity: lang === "da" ? 1 : 0.45 }}>DA</b>{" "}
+          <span style={{ opacity: lang === "en" ? 1 : 0.45 }}>EN</span>
+        </span>
+      </nav>
+    </header>
+  );
+}
+
+
+
+function MediaWell({ caption, height = 580, background = "var(--well-video)", src, video, poster, play = true, playAt = "30%", rule = false, position = "center", sound = false, startUnmuted = false, lang = "da", ratio, children, style }) {
+  const hasMedia = Boolean(src || video);
+  const ref = React.useRef(null);
+  const [muted, setMuted] = React.useState(!startUnmuted);
+  const [progress, setProgress] = React.useState(0);
+  const [playing, setPlaying] = React.useState(true);
+  const soundLabel = lang === "da" ? (muted ? "Lyd til" : "Lyd fra") : (muted ? "Sound on" : "Sound off");
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el || !video) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) {
+          el.play();
+        } else {
+          if (!el.muted) { el.muted = true; setMuted(true); }
+          el.pause();
+          el.currentTime = 0;
+          setProgress(0);
+        }
+      },
+      { threshold: 0.25 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [video]);
+  React.useEffect(() => {
+    const el = ref.current;
+    if (!el || !video || !startUnmuted) return;
+    el.muted = false;
+    setMuted(false);
+    const p = el.play();
+    if (p && p.catch) p.catch(() => { el.muted = true; setMuted(true); el.play(); });
+  }, [video, startUnmuted]);
+  const toggle = () => {
+    const el = ref.current;
+    if (!el) return;
+    el.muted = !el.muted;
+    setMuted(el.muted);
+    if (!el.muted) el.play();
+  };
+  return (
+    <div style={{ height: ratio ? "auto" : height, aspectRatio: ratio, background, position: "relative", display: "flex", alignItems: "flex-end", overflow: "hidden", ...style }}>
+      {video ? (
+        <video ref={ref} src={video} poster={poster} autoPlay muted loop playsInline onTimeUpdate={(e) => { const v = e.currentTarget; if (v.duration) setProgress(v.currentTime / v.duration); }} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+      ) : src ? (
+        <img src={src} alt="" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: position }} />
+      ) : null}
+      {hasMedia ? <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(26,21,18,0.85) 0%, rgba(26,21,18,0.25) 45%, rgba(26,21,18,0.1) 100%)" }} /> : null}
+      {rule ? <div style={{ position: "absolute", inset: 0, borderBottom: "3px solid var(--orange-500)" }} /> : null}
+      {video ? (
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 2, background: "rgba(247,242,234,0.18)", zIndex: 3 }}>
+          <div style={{ height: "100%", width: (progress * 100) + "%", background: "var(--orange-500)" }} />
+        </div>
+      ) : null}
+      {caption ? (
+        <MonoLabel tone="plain" style={{ position: "absolute", left: "var(--gutter)", top: 22, opacity: 0.8 }}>{caption}</MonoLabel>
+      ) : null}
+      {play && !video ? (
+        <div style={{ position: "absolute", left: 0, right: 0, top: playAt, display: "flex", justifyContent: "center" }}>
+          <div style={{ width: 0, height: 0, borderLeft: "32px solid var(--orange-500)", borderTop: "20px solid transparent", borderBottom: "20px solid transparent" }} />
+        </div>
+      ) : null}
+      {video ? (
+        <div style={{ position: "absolute", right: "var(--gutter)", bottom: 16, display: "flex", gap: 6, zIndex: 3 }}>
+          <button
+            onClick={() => { const el = ref.current; if (!el) return; if (el.paused) el.play(); else el.pause(); }}
+            aria-label={playing ? (lang === "da" ? "Pause" : "Pause") : (lang === "da" ? "Afspil" : "Play")}
+            title={playing ? "Pause" : (lang === "da" ? "Afspil" : "Play")}
+            style={{ background: "rgba(26,21,18,0.28)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", border: "1px solid rgba(247,242,234,0.28)", padding: "5px 7px", color: "var(--cream-100)", opacity: 0.7, cursor: "pointer", display: "flex", alignItems: "center", transition: "opacity var(--dur) var(--ease)" }}
+          >
+            {playing ? (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16" /><rect x="14" y="4" width="4" height="16" /></svg>
+            ) : (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8V4z" /></svg>
+            )}
+          </button>
+          <button
+            onClick={() => { const el = ref.current; if (!el) return; el.currentTime = 0; setProgress(0); el.play(); }}
+            aria-label={lang === "da" ? "Tilbage til start" : "Back to start"}
+            title={lang === "da" ? "Tilbage til start" : "Back to start"}
+            style={{ background: "rgba(26,21,18,0.28)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", border: "1px solid rgba(247,242,234,0.28)", padding: "5px 7px", color: "var(--cream-100)", opacity: 0.7, cursor: "pointer", display: "flex", alignItems: "center", transition: "opacity var(--dur) var(--ease)" }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M19 5 9 12l10 7V5z" /><line x1="5" y1="4.5" x2="5" y2="19.5" /></svg>
+          </button>
+        </div>
+      ) : null}
+      {video && sound ? (
+        <button
+          onClick={toggle}
+          aria-label={soundLabel}
+          title={soundLabel}
+          style={{ position: "absolute", right: "var(--gutter)", top: 22, background: "rgba(26,21,18,0.32)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", border: "1px solid rgba(247,242,234,0.45)", padding: "9px 13px", color: "var(--cream-100)", cursor: "pointer", display: "flex", alignItems: "center", gap: 9, fontFamily: "var(--font-mono)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", transition: "background var(--dur) var(--ease)" }}
+        >
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M11 5 6.5 9H3v6h3.5L11 19V5z" />
+            {muted ? (
+              <>
+                <path d="M16 9a4 4 0 0 1 0 6" opacity="0.35" />
+                <path d="M18.8 6.5a7.5 7.5 0 0 1 0 11" opacity="0.35" />
+                <path d="M3.5 20.5 21 3.5" />
+              </>
+            ) : (
+              <>
+                <path d="M16 9a4 4 0 0 1 0 6" />
+                <path d="M18.8 6.5a7.5 7.5 0 0 1 0 11" />
+              </>
+            )}
+          </svg>
+          <span>{soundLabel}</span>
+        </button>
+      ) : null}
+      <div style={{ position: "relative", padding: "30px var(--gutter)", width: "100%", boxSizing: "border-box" }}>{children}</div>
+    </div>
+  );
+}
+
+
+
+function VenueMarquee({ venues = ["Roskilde", "Alice", "Jazzhouse", "Vega", "Musikhuset Aarhus"], style }) {
+  const line = [...venues, ...venues];
+  return (
+    <div style={{ background: "var(--cyan-400)", color: "var(--ink-900)", padding: "20px 0", overflow: "hidden", ...style }}>
+      <div style={{ display: "flex", gap: 30, whiteSpace: "nowrap", paddingLeft: "var(--gutter)", fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 24, letterSpacing: "-0.01em", textTransform: "uppercase", animation: "thes-marquee 24s linear infinite" }}>
+        {line.map((v, i) => <span key={i} style={{ opacity: i >= venues.length ? 0.5 : 1 }}>{v}</span>)}
+      </div>
+      <style>{"@keyframes thes-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}"}</style>
+    </div>
+  );
+}
+
+
+// Every string on the site, Danish first with its English counterpart.
+// Band copy is taken verbatim from the supplied biography and press release.
+// [CHECK] marks anything I filled in myself.
+
+const MEDIA = {
+  pressPhoto: "assets/press-band.jpeg",
+  introVideo: "assets/thes-intro.mp4",
+  releaseVideo: "assets/thes-intro.mp4",
+  live: [
+    "assets/live-1.png",
+    "assets/live-2.png",
+    "assets/live-3.png",
+    "assets/live-4.png",
+    "assets/live-5.png",
+    "assets/live-6.png",
+    "assets/live-7.png"
+  ]
+};
+
+const INTRO = {
+  da: [
+    "The Heart’s Electrical System spiller moderne, melodisk og improviserende jazz med et tydeligt rytmisk fokus. Musikken bevæger sig i krydsfeltet mellem jazz, elektronica og instrumental hiphop og kan høres som jazz anno 2026.",
+    "Bandets lyd er kendetegnet ved et markant groove og et nutidigt rytmisk udtryk, der skaber rammen for solisternes frie udfoldelse over et solidt harmonisk fundament. Her mødes akustiske instrumenter og elektroniske elementer i et åbent og imødekommende musikalsk univers, som fungerer både til koncentreret lytning og i mere sociale sammenhænge.",
+    "Navnet The Heart’s Electrical System afspejler essensen af bandets musikalske tilgang. Hjertet – ofte opfattet som det mest menneskelige, biologiske og analoge – fungerer gennem elektriske impulser. Et hjerteslag kan beskrives som en sinuskurve, den samme grundform som ligger til grund for en synthesizer. På den måde bliver skellet mellem analog jazz og elektronisk musik overskredet. Begge udtryk rummer sjæl, nærvær og følelsesmæssig dybde, og det er netop de følelser, musikken vækker, der er kernen i projektet."
+  ],
+  en: [
+    "The Heart’s Electrical System plays modern, melodic, improvising jazz with a clear rhythmic focus. The music moves between jazz, electronica and instrumental hiphop, and can be heard as jazz in 2026.",
+    "The band's sound is marked by a strong groove and a contemporary rhythmic feel, framing the soloists' free playing over a solid harmonic foundation. Acoustic instruments meet electronic elements in an open, welcoming musical world that works for close listening as much as for more social settings.",
+    "The name The Heart’s Electrical System reflects the essence of the band's approach. The heart – usually thought of as the most human, biological and analogue thing there is – runs on electrical impulses. A heartbeat can be described as a sine wave, the same shape that underpins a synthesizer. That makes the divide between analogue jazz and electronic music artificial. Both hold soul, presence and emotional depth, and it is exactly those feelings the music stirs that are at the core of the project."
+  ]
+};
+
+const MEMBERS = [
+  {
+    name: "Anton Schrøder Hejlesen",
+    photo: "assets/portrait-anton.jpeg",
+    role: { da: "Trompet", en: "Trumpet" },
+    bio: {
+      da: "Aarhusiansk trompetist og studerende ved Det Jyske Musikkonservatorium. Aktiv på den aarhusianske jazzscene og arbejder samtidig med genrer som afrobeat, funk og salsa. Har spillet i en lang række orkestre og bands, blandt andet med John Riddell og Kathrine Windfeld i spidsen. Har samarbejdet med Copenhagen Jazz Orchestra og Lars Møller og spiller desuden trompet for artisten JJ PAULO.",
+      en: "Trumpeter from Aarhus, studying at the Royal Academy of Music. Active on the Aarhus jazz scene and works across afrobeat, funk and salsa. Has played in orchestras and bands led by John Riddell and Kathrine Windfeld, and collaborated with Copenhagen Jazz Orchestra and Lars Møller. Also plays trumpet for JJ PAULO."
+    }
+  },
+  {
+    name: "Asger Kirkegaard Sørensen",
+    photo: "assets/portrait-asger.jpeg",
+    role: { da: "Guitar", en: "Guitar" },
+    bio: {
+      da: "Guitarist med base i Aarhus, hvor han studerer på Det Jyske Musikkonservatorium. Aktiv på den aarhusianske musikscene i mange sammenhænge og optræder inden for både alternative, r'n'b, latin og progressiv rock med navne som Methea, St. Lazar og Prince-bassisten Ida Nielsen. Udforsker guitarens soniske grænser gennem en legende tilgang til effekter. Spillet er melodisk inspireret af fusionslegender som Pat Metheny og Wayne Krantz kombineret med den rytmiske intensitet fra den nyere UK-jazzscene.",
+      en: "Guitarist based in Aarhus, studying at the Royal Academy of Music. Active across the city's music scene in alternative, r'n'b, latin and progressive rock with acts such as Methea, St. Lazar and Prince bassist Ida Nielsen. Explores the sonic limits of the guitar through a playful approach to effects. His playing is melodically indebted to fusion legends like Pat Metheny and Wayne Krantz, combined with the rhythmic intensity of the newer UK jazz scene."
+    }
+  },
+  {
+    name: "Henrik Windbirk",
+    photo: "assets/portrait-henrik.jpeg",
+    role: { da: "Tenorsaxofon", en: "Tenor saxophone" },
+    bio: {
+      da: "Saxofonist bosat ved Aarhus. Har spillet i mange forskellige konstellationer, primært inden for jazz, soul og funk, både i større og mindre bands, samt som orkestermusiker i forbindelse med revyer og musicals. Har gennem årene optrådt med blandt andre Booze Brothers, Morten Lindberg (Master Fatman), Mek Pek og Cæcilie Norby. Er også en del af Sunday Deluxe, et jam-funkorkester med fokus på funk i egne arrangementer.",
+      en: "Saxophonist based near Aarhus. Has played in a wide range of settings, mainly jazz, soul and funk, in both large and small bands, and as an orchestral musician for revues and musicals. Has performed with Booze Brothers, Morten Lindberg (Master Fatman), Mek Pek and Cæcilie Norby. Also part of Sunday Deluxe, a jam-funk outfit."
+    }
+  },
+  {
+    name: "Jacob Salmon",
+    photo: "assets/portrait-jacob.jpeg",
+    role: { da: "Klaver, synthesizer, beats", en: "Piano, synthesizer, beats" },
+    bio: {
+      da: "Pianist, komponist og producer fra Danmark. Arbejder i krydsfeltet mellem jazz, elektronisk musik og beats og er uddannet producer og mixtekniker fra School of Audio Engineering i London. Efter en længere periode med fokus på klaver, jazzimprovisation og projekter med sangere har han de senere år vendt tilbage til produktion og komposition i et mere kollektivt, instrumentalt jazzformat. Med The Heart's Electrical System samler han musikere fra den aarhusianske jazzscene i et nutidigt, groovebaseret udtryk.",
+      en: "Pianist, composer and producer from Denmark. Works between jazz, electronic music and beats, and trained as a producer and mixing engineer at the School of Audio Engineering in London. After years focused on piano, jazz improvisation and projects with singers, he has returned to production and composition in a collective, instrumental jazz format. With The Heart's Electrical System he gathers musicians from the Aarhus jazz scene into a contemporary, groove-based sound."
+    }
+  }
+];
+
+const GUESTS = [
+  "Anders Bøwadt Jensen — trombone",
+  "Lauge Sloth Nielsen — bas",
+  "Morten Svenningsen — guitar"
+];
+
+const ALBUM = {
+  title: "We Dream In Low Fidelity",
+  released: { da: "17. april 2026", en: "17 April 2026" },
+  format: { da: "Album — digital + vinyl", en: "Album — digital + vinyl" },
+  spotifyEmbed: "https://open.spotify.com/embed/album/2E7w2YS8tUJOpJn60MLE4B?utm_source=generator&si=99734afaae81411f",
+  cover: "assets/album-we-dream-in-low-fidelity.png",
+  buy: "https://gatewaymusicshop.dk/da/vinyl/WeDreaminLowFidelity-vinyl"
+};
+
+const PULLQUOTE = {
+  text: {
+    da: "Med afsæt i egne, melodiske kompositioner formår bandet på let vis at forene elektroniske beats med moderne jazz og instrumental hiphop. Sammensmeltningen fremstår stringent og sikker, og oplevelsen er af samme grund fed, medrivende.",
+    en: "Working from their own melodic compositions, the band effortlessly brings electronic beats together with modern jazz and instrumental hiphop. The fusion comes across as rigorous and assured, and the experience is, for that very reason, great and compelling."
+  },
+  // The English line is a translation of a Danish review, not the critic's own words.
+  translatedNote: { da: "", en: "Translated from Danish" },
+  author: "Ivan Rod",
+  role: {
+    da: "Journalist, forfatter, redaktør og anmelder, bl.a. på Gaffa",
+    en: "Journalist, author, editor and critic, including for Gaffa"
+  },
+  stars: 4,
+  photo: "assets/ivan-rod.png",
+  url: "https://www.ivanrod.dk/2026/04/17/the-hearts-electrical-system-we-dream-in-low-fidelity"
+};
+
+const REVIEWS = [
+  { source: "Ivan Rod", url: "https://www.ivanrod.dk/2026/04/17/the-hearts-electrical-system-we-dream-in-low-fidelity" },
+  { source: "Musikfans", url: "https://musikfans.dk/the-hearts-electrical-system/" },
+  { source: "Capac", url: "https://www.capac.dk/wordpress/?p=39984" }
+];
+
+const SOCIALS = {
+  instagram: "https://www.instagram.com/theheartselectricalsystem",
+  facebook: "https://www.facebook.com/theheartselectricalsystem",
+  spotify: "https://open.spotify.com/artist/6yQUwki6MKWvhkyoh8tzuA",
+  youtube: "https://youtu.be/u4jp5a-4Uwc",
+  shop: "https://gatewaymusicshop.dk/da/vinyl/WeDreaminLowFidelity-vinyl",
+  messenger: "https://m.me/theheartselectricalsystem"
+};
+
+const BOOKING = {
+  name: "Jacob Salmon",
+  email: "jacob.salmon@icloud.com",
+  phone: "+45 61 30 28 04"
+};
+
+const COPY = {
+  heroKicker: { da: "Jazz beats electronica live", en: "Jazz beats electronica live" },
+  heroLede: {
+    da: "Albummet We Dream In Low Fidelity er ude nu.",
+    en: "The album We Dream In Low Fidelity is out now."
+  },
+  statement: {
+    da: "Programmerede grooves danner fundamentet for levende samspil mellem saxofon, trompet, guitar, bas og klaver.",
+    en: "Programmed grooves form the foundation for live interplay between saxophone, trumpet, guitar, bass and piano."
+  },
+  noDrums: {
+    da: "Ingen trommer. Beats er motoren.",
+    en: "No drum kit. Beats are the engine."
+  },
+  nameStory: {
+    da: "Hjertet — ofte opfattet som det mest menneskelige, biologiske og analoge — fungerer gennem elektriske impulser. Et hjerteslag kan beskrives som en sinuskurve, den samme grundform som ligger til grund for en synthesizer.",
+    en: "The heart — usually thought of as the most human, biological and analogue thing there is — runs on electrical impulses. A heartbeat can be described as a sine wave, the same shape that underpins a synthesizer."
+  }
+};
+
+
+
+const SHOWS = [
+  { name: "CPH Jazz Festival", meta: "København 5. juli 2026", clip: "", bg: "#20303C", video: "assets/cph-jazz-festival.mp4", sound: true },
+  { name: "Noget Bedre Festival", meta: "Silkeborg 31. juli 2026", clip: "", bg: "#20303C", video: "assets/noget-bedre-festival.mp4", sound: true },
+  { name: "Release Koncert i Ry", meta: "Ry, 18. april 2026", clip: "", bg: "#20303C", video: "assets/thes-intro.mp4", sound: true },
+];
+
+function ConcertPicker({ lang = "da" }) {
+  const [active, setActive] = React.useState(0);
+  const [picked, setPicked] = React.useState(false);
+  const show = SHOWS[active];
+  return (
+    <>
+      <section style={{ padding: "var(--section-y) var(--gutter) 0" }}>
+        <SectionHeading eyebrow="Fra scenen" size="m">Vælg en koncert</SectionHeading>
+        <div style={{ display: "flex", gap: 12, marginTop: 24, flexWrap: "wrap" }}>
+          {SHOWS.map((s, i) => (
+            <Card
+              key={s.name}
+              as="button"
+              onClick={() => { setActive(i); setPicked(true); }}
+              style={{
+                background: i === active ? "var(--cyan-400)" : "transparent",
+                color: i === active ? "var(--ink-900)" : "var(--cream-100)",
+                border: i === active ? "2px solid var(--cyan-400)" : "2px solid rgba(247,242,234,0.25)",
+              }}
+            >
+              <span style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 18, letterSpacing: "-0.02em", textTransform: "uppercase" }}>{s.name}</span>
+              <MonoLabel tone={i === active ? "plain" : "quiet"}>{s.meta}</MonoLabel>
+            </Card>
+          ))}
+        </div>
+      </section>
+      <section style={{ padding: "28px var(--gutter) 0" }}>
+        <MediaWell key={show.name} src={show.src} video={show.video} sound={show.sound} startUnmuted={picked} lang={lang} caption={show.clip} ratio="16 / 9" background={show.bg} playAt="38%">
+          <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 34, letterSpacing: "-0.03em", textTransform: "uppercase", lineHeight: 1 }}>{show.name}</div>
+          <MonoLabel tone="plain" style={{ marginTop: 8, opacity: 0.8, letterSpacing: "0.1em", fontSize: 12 }}>{show.meta}</MonoLabel>
+        </MediaWell>
+      </section>
+    </>
+  );
+}
+
+
+
+function HomePage({ lang = "da", go }) {
+  const t = (o) => o[lang];
+  return (
+    <>
+      <div style={{ position: "relative" }}>
+        <MediaWell video={MEDIA.releaseVideo} sound lang={lang} height={580}>
+          <MonoLabel wide>{t(COPY.heroKicker)}</MonoLabel>
+          <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 88, lineHeight: 0.9, letterSpacing: "-0.035em", textTransform: "uppercase", margin: "12px 0 0", maxWidth: "16ch" }}>
+            We Dream In<br /><span style={{ color: "var(--orange-500)" }}>Low Fidelity</span>
+          </h1>
+          <p style={{ fontSize: 16, opacity: 0.85, margin: "16px 0 0" }}>{t(COPY.heroLede)}</p>
+        </MediaWell>
+      </div>
+
+      <section style={{ background: "var(--bg-raised)", padding: "var(--section-y) var(--gutter)" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "auto 110px", gap: 22, alignItems: "start", justifyContent: "start" }}>
+          <div>
+            <div style={{ display: "flex", gap: 6, color: "var(--orange-500)" }}>
+              {[0, 1, 2, 3].map((i) => (
+                <svg key={i} width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M12 2.5l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6-5.9-3.2-5.9 3.2 1.2-6.6L2.5 9.5l6.6-.9z" />
+                </svg>
+              ))}
+            </div>
+            <blockquote style={{ fontFamily: "var(--font-quote)", fontSize: 34, lineHeight: 1.22, letterSpacing: "-0.01em", margin: "20px 0 0", maxWidth: "40ch" }}>
+              “{PULLQUOTE.text[lang]}”
+            </blockquote>
+            <div style={{ marginTop: 22, fontFamily: "var(--font-mono)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.1em" }}>
+              <span style={{ color: "var(--cyan-400)" }}>{PULLQUOTE.author}</span>
+              {PULLQUOTE.translatedNote[lang] ? (
+                <span style={{ opacity: 0.5 }}> · {PULLQUOTE.translatedNote[lang]}</span>
+              ) : null}
+              <div style={{ opacity: 0.6, marginTop: 6, letterSpacing: "0.06em" }}>{PULLQUOTE.role[lang]}</div>
+              <a
+                href={PULLQUOTE.url}
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: "inline-block", marginTop: 12, letterSpacing: "0.06em", color: "inherit", opacity: 0.55, borderBottom: "1px solid currentColor", paddingBottom: 2, transition: "opacity var(--dur) var(--ease)" }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = 1)}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = 0.55)}
+              >
+                {lang === "da" ? "Læs hele anmeldelsen" : "Read the full review"}
+              </a>
+            </div>
+          </div>
+          <img src={PULLQUOTE.photo} alt={PULLQUOTE.author} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", display: "block" }} />
+        </div>
+        <div style={{ display: "flex", gap: 0, marginTop: 36 }}>
+          <Button variant="warm" onClick={() => go("musik")}>{lang === "da" ? "Hør albummet" : "Hear the album"}</Button>
+          <Button variant="cream" onClick={() => go("booking")}>{lang === "da" ? "Book bandet" : "Book the band"}</Button>
+        </div>
+      </section>
+
+      <MediaWell src={MEDIA.pressPhoto} position="center 35%" height={460} background="var(--ink-700)" play={false} rule>
+        <div style={{ maxWidth: "40ch" }}>
+          <h2 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 44, lineHeight: 1, letterSpacing: "-0.03em", textTransform: "uppercase", margin: 0 }}>
+            {lang === "da" ? "Jazz anno 2026" : "Jazz in 2026"}
+          </h2>
+          <p style={{ fontSize: 15, lineHeight: 1.55, opacity: 0.85, margin: "14px 0 0" }}>{t(COPY.nameStory)}</p>
+          <a
+            href="#om"
+            onClick={(e) => { e.preventDefault(); go("om"); }}
+            style={{ display: "inline-block", marginTop: 22, fontFamily: "var(--font-body)", fontWeight: 700, fontSize: 14, textTransform: "uppercase", letterSpacing: "0.06em", color: "var(--orange-500)", borderBottom: "1px solid var(--orange-500)", paddingBottom: 4, transition: "color var(--dur) var(--ease), border-color var(--dur) var(--ease)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = "var(--cream-100)"; e.currentTarget.style.borderColor = "var(--cream-100)"; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = "var(--orange-500)"; e.currentTarget.style.borderColor = "var(--orange-500)"; }}
+          >
+            {lang === "da" ? "Læs mere om bandet" : "More about the band"}
+          </a>
+        </div>
+      </MediaWell>
+
+      <ConcertPicker lang={lang} />
+
+      <section style={{ padding: "56px var(--gutter) var(--section-y)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36, alignItems: "center" }}>
+        <img src={ALBUM.cover} alt={ALBUM.title} style={{ width: "100%", display: "block" }} />
+        <div>
+          <SectionHeading eyebrow={lang === "da" ? "Ny udgivelse" : "New release"} size="m">{ALBUM.title}</SectionHeading>
+          <MonoLabel tone="quiet" style={{ marginTop: 16 }}>{t(ALBUM.released)} · {t(ALBUM.format)}</MonoLabel>
+          <div style={{ display: "flex", gap: 0, marginTop: 22 }}>
+            <Button variant="warm" href={ALBUM.buy} target="_blank" rel="noreferrer">{lang === "da" ? "Køb vinyl" : "Buy vinyl"}</Button>
+            <Button variant="cream" onClick={() => go("musik")}>{lang === "da" ? "Stream" : "Stream"}</Button>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ background: "var(--cyan-400)", color: "var(--ink-900)", padding: "32px var(--gutter)", display: "flex", alignItems: "center", flexWrap: "wrap", gap: 26 }}>
+        <MonoLabel tone="plain" wide style={{ opacity: 0.7 }}>{lang === "da" ? "Anmeldelser" : "Reviews"}</MonoLabel>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 22 }}>
+          {REVIEWS.map((r) => (
+            <a key={r.source} href={r.url} target="_blank" rel="noreferrer" style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 16, letterSpacing: "-0.01em", textTransform: "uppercase", color: "inherit", textDecoration: "none", borderBottom: "2px solid var(--ink-900)", paddingBottom: 2 }}>
+              {r.source}
+            </a>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+
+
+function MusicPage({ lang = "da" }) {
+  return (
+    <section style={{ padding: "40px var(--gutter) var(--section-y)" }}>
+      <SectionHeading eyebrow={lang === "da" ? "Udgivelser" : "Releases"} size="l" as="h1" style={{ whiteSpace: "nowrap" }}>{ALBUM.title}</SectionHeading>
+      <MonoLabel tone="quiet" style={{ marginTop: 16 }}>{ALBUM.released[lang]} · {ALBUM.format[lang]}</MonoLabel>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36, marginTop: 36, alignItems: "start" }}>
+        <div>
+          <img src={ALBUM.cover} alt={ALBUM.title} style={{ width: "100%", display: "block" }} />
+          <MonoLabel tone="quiet" style={{ marginTop: 14 }}>{lang === "da" ? "Cover foto: Joachim Ladefoged" : "Cover photo: Joachim Ladefoged"}</MonoLabel>
+          <MonoLabel tone="quiet" style={{ marginTop: 6 }}>{lang === "da" ? "Cover design: Peter Ringtved" : "Cover design: Peter Ringtved"}</MonoLabel>
+        </div>
+        <div>
+          <iframe
+            title="Spotify"
+            src={ALBUM.spotifyEmbed}
+            width="100%"
+            height="352"
+            frameBorder="0"
+            allowFullScreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+            style={{ border: 0, display: "block", borderRadius: 12, background: "transparent", colorScheme: "normal" }}
+          />
+          <div style={{ display: "flex", gap: 0, marginTop: 22 }}>
+            <Button variant="warm" href={ALBUM.buy} target="_blank" rel="noreferrer">{lang === "da" ? "Køb vinyl" : "Buy vinyl"}</Button>
+          </div>
+          <MonoLabel tone="quiet" style={{ marginTop: 18 }}>
+            {lang === "da" ? "Førstesinglen Alpaca Swagger blev udvalgt til Apple Music-playlisten New Music Daily." : "The first single, Alpaca Swagger, was picked for Apple Music's New Music Daily."}
+          </MonoLabel>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
+
+function VideoPage({ lang = "da" }) {
+  const clips = [
+    { video: "assets/release-koncert.mp4", sound: true, title: { da: "Mød bandet", en: "Meet the band" }, meta: "Album release koncert i Ry 18. april 2026", caption: "" },
+    { video: "assets/noget-bedre-festival.mp4", sound: true, title: { da: "Noget Bedre Festival", en: "Noget Bedre Festival" }, meta: "Silkeborg 31. juli 2026", caption: "" },
+    { video: "assets/cph-jazz-festival.mp4", sound: true, title: { da: "CPH Jazz Festival", en: "CPH Jazz Festival" }, meta: "København 5. juli 2026", caption: "" }
+  ];
+  return (
+    <section style={{ padding: "40px var(--gutter) var(--section-y)" }}>
+      <SectionHeading eyebrow={lang === "da" ? "Se bandet" : "Watch"} size="l" as="h1">Video</SectionHeading>
+      <div style={{ display: "flex", flexDirection: "column", gap: 26, marginTop: 32 }}>
+        {clips.map((c) => (
+          <MediaWell key={c.title.da} video={c.video} src={c.src} sound={c.sound} lang={lang} caption={c.caption} ratio="16 / 9" playAt="38%">
+            <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 34, letterSpacing: "-0.03em", textTransform: "uppercase", lineHeight: 1 }}>{c.title[lang]}</div>
+            {c.meta ? <MonoLabel tone="plain" style={{ marginTop: 8, opacity: 0.8, letterSpacing: "0.1em", fontSize: 12 }}>{c.meta}</MonoLabel> : null}
+          </MediaWell>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+
+
+function AboutPage({ lang = "da" }) {
+  return (
+    <>
+      <MediaWell src={MEDIA.pressPhoto} position="center 35%" height={460} background="var(--ink-700)" play={false} rule>
+        <SectionHeading size="l" as="h1" eyebrow={lang === "da" ? "Om bandet" : "About"}>
+          {lang === "da" ? "Når maskine og menneske slår i takt" : "Where machine and human fall into step"}
+        </SectionHeading>
+      </MediaWell>
+
+      <section style={{ padding: "48px var(--gutter) 40px" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 18, maxWidth: "62ch" }}>
+          {INTRO[lang].map((para, i) => (
+            <p key={i} style={{ fontSize: i === 0 ? 20 : 16, lineHeight: i === 0 ? 1.45 : 1.6, opacity: i === 0 ? 1 : 0.85, margin: 0 }}>{para}</p>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ background: "var(--bg-raised)", padding: "48px var(--gutter) var(--section-y)" }}>
+        <MonoLabel wide>{lang === "da" ? "Medlemmer" : "Members"}</MonoLabel>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36, marginTop: 26 }}>
+          {MEMBERS.map((m) => (
+            <div key={m.name}>
+              <img src={m.photo} alt={m.name} style={{ width: "100%", aspectRatio: "4/5", objectFit: "cover", display: "block", marginBottom: 16 }} />
+              <div style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 26, letterSpacing: "-0.02em", textTransform: "uppercase", lineHeight: 1 }}>{m.name}</div>
+              <MonoLabel tone="warm" style={{ marginTop: 8 }}>{m.role[lang]}</MonoLabel>
+              <p style={{ fontSize: 15, lineHeight: 1.55, opacity: 0.8, marginTop: 12 }}>{m.bio[lang]}</p>
+            </div>
+          ))}
+        </div>
+        <MonoLabel tone="quiet" style={{ marginTop: 36 }}>
+          {(lang === "da" ? "Medvirkende på albummet: " : "Also on the album: ") + GUESTS.join(" · ")}
+        </MonoLabel>
+      </section>
+    </>
+  );
+}
+
+
+
+const FILES = [
+  { da: "Biografi (PDF)", en: "Biography (PDF)", href: "assets/press/biografi-thes.pdf" },
+  { da: "Pressemeddelelse (PDF)", en: "Press release (PDF)", href: "assets/press/pressemeddelelse-we-dream-in-low-fidelity.pdf" },
+  { da: "Alle pressefotos (ZIP)", en: "All press photos (ZIP)", href: "assets/press/thes-pressefotos.zip" },
+  { da: "Teknisk rider (JPEG)", en: "Tech rider (JPEG)", href: "assets/press/thes-tech-rider.jpeg" },
+  { da: "Logo (PDF)", en: "Logo (PDF)", href: "assets/THES_Logo.pdf" },
+  { da: "Album cover (PNG, 3000×3000)", en: "Album cover (PNG, 3000×3000)", href: "assets/press/thes-album-cover-3000x3000.png" }
+];
+
+const PRESS_PHOTOS = [
+  { file: "assets/press/thes-band-1500x800.jpeg", da: "Bandet, bredformat", en: "Band, wide", span: 2 },
+  { file: "assets/press/thes-band-1500x1500.jpeg", da: "Bandet, kvadratisk", en: "Band, square", span: 1 },
+  { file: "assets/press/thes-band-1080x1350.jpg", da: "Bandet, højformat", en: "Band, portrait", span: 1 },
+  { file: "assets/press/thes-jacob.jpg", da: "Jacob Salmon", en: "Jacob Salmon", span: 1 },
+  { file: "assets/press/thes-henrik.jpg", da: "Henrik Windbirk", en: "Henrik Windbirk", span: 1 },
+  { file: "assets/press/thes-anton.jpeg", da: "Anton Schrøder Hejlesen", en: "Anton Schrøder Hejlesen", span: 1 },
+  { file: "assets/press/thes-asger.jpg", da: "Asger Kirkegaard Sørensen", en: "Asger Kirkegaard Sørensen", span: 1 }
+];
+
+function EpkPage({ lang = "da" }) {
+  return (
+    <>
+      <section style={{ padding: "40px var(--gutter) var(--section-y)" }}>
+        <SectionHeading eyebrow="Electronic press kit" size="l" as="h1" lede={lang === "da" ? "Alt materiale til presse og arrangører, samlet ét sted." : "Everything press and promoters need, in one place."}>
+          EPK
+        </SectionHeading>
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px 36px", marginTop: 32 }}>
+          {FILES.map((file) => (
+            <a key={file.da} href={file.href} download style={{ color: "inherit", textDecoration: "none", borderBottom: "2px solid var(--cream-100)", paddingBottom: 10, fontFamily: "var(--font-mono)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              ↓ {file[lang]}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ padding: "0 var(--gutter) 32px" }}>
+        <MonoLabel wide>{lang === "da" ? "Pressefotos" : "Press photos"}</MonoLabel>
+        <MonoLabel tone="quiet" style={{ marginTop: 10 }}>{lang === "da" ? "Klik på et foto for at hente det i fuld opløsning." : "Click a photo to download it at full resolution."}</MonoLabel>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 12, marginTop: 18 }}>
+          {PRESS_PHOTOS.map((p) => (
+            <a key={p.file} href={p.file} download style={{ gridColumn: "span " + p.span, display: "block", position: "relative", textDecoration: "none", color: "var(--cream-100)" }}>
+              <img src={p.file} alt={p[lang]} style={{ width: "100%", aspectRatio: p.span === 2 ? "15/8" : "4/5", objectFit: "cover", display: "block" }} />
+              <span style={{ position: "absolute", left: 10, bottom: 10, background: "rgba(26,21,18,0.32)", backdropFilter: "blur(6px)", WebkitBackdropFilter: "blur(6px)", border: "1px solid rgba(247,242,234,0.28)", padding: "5px 8px", fontFamily: "var(--font-mono)", fontSize: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>↓ {p[lang]}</span>
+            </a>
+          ))}
+        </div>
+        <MonoLabel tone="quiet" style={{ marginTop: 14 }}>{lang === "da" ? "Fotos: Joachim Ladefoged" : "Photos: Joachim Ladefoged"}</MonoLabel>
+      </section>
+
+      <section style={{ background: "var(--bg-raised-cool)", padding: "36px var(--gutter) 40px" }}>
+        <MonoLabel wide>{lang === "da" ? "Kort biografi" : "Short biography"}</MonoLabel>
+        <p style={{ fontSize: 16, lineHeight: 1.55, maxWidth: "56ch", opacity: 0.85, marginTop: 18 }}>
+          {lang === "da"
+            ? "The Heart's Electrical System er en jazz quartet skabt af komponist, pianist og producer Jacob Salmon. Elektroniske beats og improviserende musikere mødes i et musikalsk rum, hvor programmerede grooves danner fundamentet for levende samspil mellem saxofon, trompet, guitar og klaver. Albummet " + ALBUM.title + " udkom " + ALBUM.released.da + "."
+            : "The Heart's Electrical System is a jazz quartet created by composer, pianist and producer Jacob Salmon. Electronic beats meet improvising musicians in a space where programmed grooves form the foundation for live interplay between saxophone, trumpet, guitar and piano. The album " + ALBUM.title + " was released " + ALBUM.released.en + "."}
+        </p>
+        <MonoLabel tone="quiet" style={{ marginTop: 26 }}>{lang === "da" ? "Presse: " : "Press: "}{BOOKING.email} · {BOOKING.phone}</MonoLabel>
+      </section>
+
+      <section style={{ background: "var(--cyan-400)", color: "var(--ink-900)", padding: "32px var(--gutter)", display: "flex", alignItems: "center", flexWrap: "wrap", gap: 26 }}>
+        <MonoLabel tone="plain" wide style={{ opacity: 0.7 }}>{lang === "da" ? "Anmeldelser" : "Reviews"}</MonoLabel>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 22 }}>
+          {REVIEWS.map((r) => (
+            <a key={r.source} href={r.url} target="_blank" rel="noreferrer" style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 16, letterSpacing: "-0.01em", textTransform: "uppercase", color: "inherit", textDecoration: "none", borderBottom: "2px solid var(--ink-900)", paddingBottom: 2 }}>
+              {r.source}
+            </a>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
+
+
+function ShopPage({ lang = "da" }) {
+  return (
+    <section style={{ background: "var(--orange-500)", color: "var(--ink-900)", padding: "var(--section-y) var(--gutter)", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36, alignItems: "center" }}>
+      <img src={ALBUM.cover} alt={ALBUM.title} style={{ width: "100%", display: "block" }} />
+      <div>
+        <MonoLabel tone="plain" wide style={{ opacity: 0.7 }}>{lang === "da" ? "Shop" : "Shop"}</MonoLabel>
+        <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 46, lineHeight: 0.98, letterSpacing: "-0.03em", textTransform: "uppercase", margin: "12px 0 0" }}>
+          {ALBUM.title} — {lang === "da" ? "vinyl" : "vinyl"}
+        </h1>
+        <p style={{ fontSize: 16, lineHeight: 1.5, marginTop: 14, maxWidth: "36ch" }}>
+          {lang === "da" ? "Vinylen sælges gennem Gateway Music Shop." : "The vinyl is sold through Gateway Music Shop."}
+        </p>
+        <Button variant="ink" href={ALBUM.buy} target="_blank" rel="noreferrer" style={{ marginTop: 20 }}>
+          {lang === "da" ? "Køb vinyl hos Gateway" : "Buy vinyl at Gateway"}
+        </Button>
+      </div>
+    </section>
+  );
+}
+
+
+
+function BookingPage({ lang = "da" }) {
+  return (
+    <>
+      <section style={{ background: "var(--cream-100)", color: "var(--ink-900)", padding: "40px var(--gutter) 44px", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 36 }}>
+        <div>
+          <h1 style={{ fontFamily: "var(--font-display)", fontWeight: 800, fontSize: 46, letterSpacing: "-0.03em", textTransform: "uppercase", lineHeight: 1, margin: 0 }}>{lang === "da" ? "Kontakt" : "Contact"}</h1>
+          <div style={{ fontSize: 16, lineHeight: 1.8, marginTop: 14 }}>
+            {BOOKING.name}<br />
+            <a href={"mailto:" + BOOKING.email} style={{ color: "inherit" }}>{BOOKING.email}</a><br />
+            <a href={"tel:" + BOOKING.phone.replace(/\s/g, "")} style={{ color: "inherit" }}>{BOOKING.phone}</a>
+          </div>
+          <p style={{ fontSize: 16, lineHeight: 1.7, maxWidth: 460, margin: "18px 0 0" }}>
+            {lang === "da"
+              ? "Du må meget gerne sende en sms på nummeret ovenfor — eller skrive en besked til bandet på Messenger."
+              : "You are very welcome to send a text message to the number above — or write to us on Messenger."}
+          </p>
+          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
+            <a href={"sms:" + BOOKING.phone.replace(/\s/g, "")} style={{ display: "inline-flex", alignItems: "center", background: "var(--ink-900)", color: "var(--cream-100)", textDecoration: "none", padding: "14px 20px", fontFamily: "var(--font-mono)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>{lang === "da" ? "Send en sms" : "Send a text"}</a>
+            <a href={SOCIALS.messenger} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", background: "transparent", color: "var(--ink-900)", textDecoration: "none", padding: "14px 20px", border: "2px solid var(--ink-900)", fontFamily: "var(--font-mono)", fontSize: 12, textTransform: "uppercase", letterSpacing: "0.06em" }}>{lang === "da" ? "Skriv på Messenger" : "Message on Messenger"}</a>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: "36px var(--gutter) var(--section-y)" }}>
+        <MonoLabel wide>{lang === "da" ? "Fra Noget Bedre Festival, Silkeborg 2026" : "From Noget Bedre Festival, Silkeborg 2026"}</MonoLabel>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginTop: 18 }}>
+          {MEDIA.live.slice(0, 6).map((src) => (
+            <img key={src} src={src} alt="" style={{ width: "100%", aspectRatio: "1/1", objectFit: "cover", display: "block" }} />
+          ))}
+        </div>
+        <MonoLabel tone="quiet" style={{ marginTop: 14 }}>[CHECK] {lang === "da" ? "Fotokreditering" : "Photo credit"}</MonoLabel>
+      </section>
+    </>
+  );
+}
+
+
+
+function SiteFooter({ lang = "da" }) {
+  return (
+    <footer style={{ borderTop: "1px solid var(--border-hairline)", padding: "30px var(--gutter) 26px" }}>
+      <SocialRail style={{ position: "static", width: "auto", flexDirection: "row", gap: 22 }} />
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 20, flexWrap: "wrap", marginTop: 26, fontFamily: "var(--font-mono)", fontSize: 11, textTransform: "uppercase", letterSpacing: "0.08em", opacity: 0.6 }}>
+        <span>© 2026 The Heart's Electrical System</span>
+        <span>{BOOKING.email} · {BOOKING.phone}</span>
+      </div>
+    </footer>
+  );
+}
+
+
+
+const NAV = [
+  { id: "forside", label: { da: "Forside", en: "Home" } },
+  { id: "musik", label: { da: "Musik", en: "Music" } },
+  { id: "video", label: { da: "Video", en: "Video" } },
+  { id: "om", label: { da: "Om bandet", en: "About" } },
+  { id: "epk", label: { da: "EPK", en: "EPK" } },
+  { id: "shop", label: { da: "Shop", en: "Shop" } },
+  { id: "booking", label: { da: "Kontakt", en: "Contact" } },
+];
+
+function Home() {
+  const [lang, setLang] = React.useState("da");
+  const [page, setPage] = React.useState("forside");
+  const go = (id) => { setPage(id); window.scrollTo(0, 0); };
+
+  const PAGES = {
+    forside: <HomePage lang={lang} go={go} />,
+    musik: <MusicPage lang={lang} />,
+    video: <VideoPage lang={lang} />,
+    om: <AboutPage lang={lang} />,
+    epk: <EpkPage lang={lang} />,
+    shop: <ShopPage lang={lang} />,
+    booking: <BookingPage lang={lang} />,
+  };
+
+  return (
+    <div style={{ background: "var(--ink-900)", color: "var(--cream-100)", fontFamily: "var(--font-body)", minHeight: "100vh" }}>
+      <SiteHeader lang={lang} page={page} nav={NAV} onNav={go} onLang={() => setLang((l) => (l === "da" ? "en" : "da"))} />
+      {PAGES[page]}
+      <SiteFooter lang={lang} />
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<Home />);
+</script>
+<script>
+  var src = document.getElementById("src").textContent;
+  var out = Babel.transform(src, { presets: [["react", { runtime: "classic" }]] }).code;
+  new Function("React", "ReactDOM", out)(React, ReactDOM);
+</script>
+</body>
+</html>
