@@ -263,7 +263,8 @@ function footer(lang) {
     `<button type="submit">${esc(t("signUp"))}</button>` +
     "</form></div>" +
     '<div class="ftr__meta"><span>© 2026 The Heart\'s Electrical System</span>' +
-    `<span>${esc(C.BOOKING.email)} · ${esc(C.BOOKING.phone)}</span></div>` +
+    `<span>${esc(C.BOOKING.email)} · ${esc(C.BOOKING.phone)}</span>` +
+    `<span>${esc(t("cookieNote"))}</span></div>` +
     "</footer>"
   );
 }

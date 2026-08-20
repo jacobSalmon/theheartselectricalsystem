@@ -375,6 +375,10 @@ const UI = {
     en: "The player loads from Spotify when you press.",
   },
   openSpotify: { da: "Åbn i Spotify", en: "Open in Spotify" },
+  cookieNote: {
+    da: "Ingen cookies fra os. Spotify-afspilleren på Musik-siden kan sætte cookies fra Spotify.",
+    en: "No cookies from us. The Spotify player on the Music page may set cookies from Spotify.",
+  },
   listenOn: { da: "Lyt hos", en: "Listen on" },
   fromStage: { da: "Fra scenen", en: "From the stage" },
   pickShow: { da: "Vælg en koncert", en: "Pick a show" },
