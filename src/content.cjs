@@ -381,7 +381,7 @@ const UI = {
   },
   listenOn: { da: "Lyt hos", en: "Listen on" },
   fromStage: { da: "Fra scenen", en: "From the stage" },
-  pickShow: { da: "Vælg en koncert", en: "Pick a show" },
+  pickShow: { da: "Video fra koncerter", en: "Video from the shows" },
   newRelease: { da: "Ny udgivelse", en: "New release" },
   releases: { da: "Udgivelser", en: "Releases" },
   watch: { da: "Se bandet", en: "Watch" },
