@@ -345,6 +345,7 @@ button { font: inherit; color: inherit; }
 .well--hero .well__body { padding-bottom: clamp(30px, 4vw, 44px); }
 .well--hero .well__lede { font-size: 16px; margin-top: 16px; }
 .well--hero .h--xl { margin: 12px 0 0; }
+.well--hero .well__box { max-height: 86svh; }
 
 .well__prog {
   position: absolute;
