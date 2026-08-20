@@ -34,14 +34,16 @@
   var menu = document.getElementById("menu");
   if (menu) {
     var close = function () {
+      menu.style.display = "none";
       if (location.hash === "#menu") history.replaceState(null, "", location.pathname + location.search);
-      menu.removeAttribute("id");
-      requestAnimationFrame(function () { menu.id = "menu"; });
     };
     var closeBtn = menu.querySelector(".menu__close");
     if (closeBtn) closeBtn.addEventListener("click", function (e) { e.preventDefault(); close(); });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && location.hash === "#menu") close();
+    });
+    window.addEventListener("hashchange", function () {
+      if (location.hash === "#menu") menu.style.display = "";
     });
   }
 

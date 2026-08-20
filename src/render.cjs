@@ -444,7 +444,7 @@ function aboutPage(lang) {
       h: "460px",
       rule: true,
       eager: true,
-      wellClass: "well--photo",
+      wellClass: "well--photo well--capup",
       body: heading(lang, {
         eyebrow: t("aboutEyebrow"),
         title: esc(t("aboutTitle")),
