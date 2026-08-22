@@ -176,13 +176,66 @@ function newsletterBand(lang) {
     `<div><h2 class="h h--m">${esc(t("nlTitle"))}</h2><p class="lede lede--dark">${esc(
       t("nlLede")
     )}</p></div>` +
-    `<form class="nlband__form" action="mailto:${esc(C.BOOKING.email)}" method="post" enctype="text/plain">` +
+    `<form class="nlband__form" data-w3 action="${esc(C.FORMS.endpoint)}" method="post">` +
+    `<input type="hidden" name="access_key" value="${esc(C.FORMS.key)}">` +
+    '<input type="hidden" name="subject" value="Nyhedsbrev — ny tilmelding">' +
+    '<input type="hidden" name="from_name" value="Website — nyhedsbrev">' +
+    '<input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">' +
     `<input class="input" type="email" name="email" required placeholder="${esc(
       t("yourEmail")
     )}" aria-label="${esc(t("yourEmail"))}">` +
     `<button class="btn btn--warm" type="submit">${esc(t("signUp"))}</button>` +
+    `<p class="fmsg fmsg--dark" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(t("nlErr"))}" data-sending="${esc(t("fSending"))}" hidden></p>` +
     "</form></section>"
   );
+}
+
+/* ---------- booking-modal ---------- */
+
+function bookModal(lang) {
+  const t = (k) => C.UI[k][lang];
+  const f = (label, name, type, extra) =>
+    '<label class="fld">' +
+    `<span class="fld__l">${label}</span>` +
+    `<${type === "textarea" ? "textarea" : "input"} class="fld__i" name="${esc(name)}"` +
+    (type === "textarea" ? ' rows="4"' : ` type="${esc(type)}"`) +
+    (extra || "") +
+    (type === "textarea" ? "></textarea>" : ">") +
+    "</label>";
+
+  return (
+    '<div class="modal" id="book" hidden>' +
+    '<div class="modal__scrim" data-book-close></div>' +
+    '<div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="book-h">' +
+    `<button class="modal__x" type="button" data-book-close aria-label="${esc(t("close"))}">&times;</button>` +
+    `<p class="mono mono--cyan">${esc(t("bookKicker"))}</p>` +
+    `<h2 class="h h--m" id="book-h">${esc(t("bookUs"))}</h2>` +
+    `<p class="modal__lede">${esc(t("bookLede"))}</p>` +
+    `<form class="bform" data-w3 action="${esc(C.FORMS.endpoint)}" method="post">` +
+    `<input type="hidden" name="access_key" value="${esc(C.FORMS.key)}">` +
+    `<input type="hidden" name="subject" value="Booking fra theheartselectricalsystem.dk">` +
+    '<input type="hidden" name="from_name" value="Website — booking">' +
+    // Sætter Svar-til på mailen til afsenderens egen adresse, så Svar virker.
+    '<input type="hidden" name="replyto" value="email">' +
+    // Skjult fælde: robotter udfylder feltet, mennesker ser det ikke.
+    '<input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">' +
+    f(esc(t("fName")), "navn", "text", ' required autocomplete="name"') +
+    '<div class="fld2">' +
+    f(esc(t("fEmail")), "email", "email", ' required autocomplete="email"') +
+    f(esc(t("fPhone")) + ` <span class="fld__o">${esc(t("fOptional"))}</span>`, "telefon", "tel", ' autocomplete="tel"') +
+    "</div>" +
+    f(esc(t("fMessage")), "besked", "textarea", ` placeholder="${esc(t("fMessagePh"))}"`) +
+    '<div class="bform__foot">' +
+    `<button class="btn btn--warm btn--mono" type="submit">${esc(t("fSend"))}</button>` +
+    `<a class="ulink ulink--quiet" href="mailto:${esc(C.BOOKING.email)}">${esc(t("orMail"))}</a>` +
+    "</div>" +
+    `<p class="fmsg" data-msg data-ok="${esc(t("fOk"))}" data-err="${esc(t("fErr"))}" data-sending="${esc(t("fSending"))}" hidden></p>` +
+    "</form></div></div>"
+  );
+}
+
+function bookBtn(lang, cls) {
+  return `<a class="btn ${cls} btn--mono" href="#book" data-book-open>${esc(C.UI.bookUs[lang])}</a>`;
 }
 
 function reviewBand(lang) {
@@ -257,12 +310,17 @@ function footer(lang) {
     '<footer class="ftr">' +
     '<div class="ftr__top">' +
     `<div class="ftr__soc">${socialLinks("icon")}</div>` +
-    `<form class="nl" action="mailto:${esc(C.BOOKING.email)}" method="post" enctype="text/plain">` +
+    `<form class="nl" data-w3 action="${esc(C.FORMS.endpoint)}" method="post">` +
+    `<input type="hidden" name="access_key" value="${esc(C.FORMS.key)}">` +
+    '<input type="hidden" name="subject" value="Nyhedsbrev — ny tilmelding">' +
+    '<input type="hidden" name="from_name" value="Website — nyhedsbrev">' +
+    '<input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">' +
     `<span class="mono mono--quiet">${esc(t("newsletter"))}</span>` +
     `<input type="email" name="email" required placeholder="${esc(t("yourEmail"))}" aria-label="${esc(
       t("nlSignUp")
     )}">` +
     `<button type="submit">${esc(t("signUp"))}</button>` +
+    `<p class="fmsg" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(t("nlErr"))}" data-sending="${esc(t("fSending"))}" hidden></p>` +
     "</form></div>" +
     '<div class="ftr__meta"><span>© 2026 The Heart\'s Electrical System</span>' +
     `<span>${esc(C.BOOKING.email)} · ${esc(C.BOOKING.phone)}</span>` +
@@ -288,7 +346,8 @@ function homePage(lang) {
     body:
       `<p class="mono mono--wide">${esc(C.COPY.heroKicker[lang])}</p>` +
       '<h1 class="h h--xl">We Dream In<br><span class="orange">Low Fidelity</span></h1>' +
-      `<p class="well__lede">${esc(C.COPY.heroLede[lang])}</p>`,
+      `<p class="well__lede">${esc(C.COPY.heroLede[lang])}</p>` +
+      `<div class="btns btns--gap">${bookBtn(lang, "btn--warm")}</div>`,
   });
 
   const quote =
@@ -554,11 +613,7 @@ function contactPage(lang) {
     `<a href="mailto:${esc(C.BOOKING.email)}">${esc(C.BOOKING.email)}</a><br>` +
     `<a href="tel:${esc(tel)}">${esc(C.BOOKING.phone)}</a></address>` +
     `<p class="contact__p">${esc(t("contactLede"))}</p>` +
-    '<div class="btns btns--gap">' +
-    `<a class="btn btn--ink btn--mono" href="sms:${esc(tel)}">${esc(t("sendSms"))}</a>` +
-    `<a class="btn btn--outlineInk btn--mono" href="${esc(
-      C.SOCIALS.messenger
-    )}" target="_blank" rel="noreferrer">${esc(t("messenger"))}</a>` +
+    `<div class="btns btns--gap">${bookBtn(lang, "btn--warm")}</div>` +
     "</div></div></section>" +
     '<section class="sec sec--tight">' +
     `<p class="mono mono--wide">${esc(t("liveCaption"))}</p>` +
@@ -653,6 +708,7 @@ function document_(lang, id) {
     `<main id="main">${BODIES[id](lang)}</main>` +
     (id === "forside" ? newsletterBand(lang) : "") +
     footer(lang) +
+    bookModal(lang) +
     `<script src="${base}app.js" defer></script>` +
     "</body>\n</html>\n"
   );

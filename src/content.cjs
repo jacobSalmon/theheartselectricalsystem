@@ -10,6 +10,13 @@ const BOOKING = {
   phone: "+45 61 30 28 04",
 };
 
+// Web3Forms tager imod booking- og nyhedsbrevsformularerne og sender dem videre
+// som mail. Nøglen er offentlig med vilje — det er sådan tjenesten er bygget.
+const FORMS = {
+  key: "c5de1f43-d466-41c6-bda4-688d1927f7f6",
+  endpoint: "https://api.web3forms.com/submit",
+};
+
 const SOCIALS = {
   instagram: "https://www.instagram.com/theheartselectricalsystem",
   facebook: "https://www.facebook.com/theheartselectricalsystem",
@@ -329,8 +336,8 @@ const PAGES = [
       en: "Contact and booking | The Heart's Electrical System",
     },
     desc: {
-      da: "Book bandet. Ring, send en sms eller skriv på Messenger.",
-      en: "Book the band. Call, text or write on Messenger.",
+      da: "Book bandet. Skriv en besked, ring eller send en mail.",
+      en: "Book the band. Send a message, call or write an email.",
     },
     image: "assets/live-2.png",
   },
@@ -411,10 +418,35 @@ const UI = {
   press: { da: "Presse: ", en: "Press: " },
   contact: { da: "Kontakt", en: "Contact" },
   contactLede: {
-    da: "Du må meget gerne sende en sms på nummeret ovenfor — eller skrive en besked til bandet på Messenger.",
-    en: "You are very welcome to send a text message to the number above — or write to us on Messenger.",
+    da: "Skriv til os om booking, presse eller andet. Vi svarer så hurtigt vi kan.",
+    en: "Write to us about booking, press or anything else. We answer as quickly as we can.",
   },
   sendSms: { da: "Send en sms", en: "Send a text" },
+  bookUs: { da: "Book os", en: "Book us" },
+  bookKicker: { da: "Booking", en: "Booking" },
+  bookLede: {
+    da: "Skriv kort hvad I har i tankerne, så vender vi tilbage hurtigst muligt.",
+    en: "Tell us briefly what you have in mind and we will get back to you as soon as we can.",
+  },
+  fName: { da: "Navn", en: "Name" },
+  fEmail: { da: "E-mail", en: "Email" },
+  fPhone: { da: "Telefon", en: "Phone" },
+  fOptional: { da: "valgfri", en: "optional" },
+  fMessage: { da: "Besked", en: "Message" },
+  fMessagePh: {
+    da: "Spillested, dato eller periode, og hvad I forestiller jer.",
+    en: "Venue, date or period, and what you have in mind.",
+  },
+  fSend: { da: "Send", en: "Send" },
+  fSending: { da: "Sender …", en: "Sending …" },
+  fOk: { da: "Tak — beskeden er sendt. I hører fra os.", en: "Thank you — your message is sent. We will be in touch." },
+  fErr: {
+    da: "Beskeden kunne ikke sendes. Skriv i stedet en mail til os.",
+    en: "The message could not be sent. Please email us instead.",
+  },
+  orMail: { da: "Skriv i stedet en mail", en: "Send an email instead" },
+  nlOk: { da: "Tak — du er tilmeldt.", en: "Thank you — you are signed up." },
+  nlErr: { da: "Tilmeldingen kunne ikke gennemføres.", en: "The sign-up could not be completed." },
   messenger: { da: "Skriv på Messenger", en: "Message on Messenger" },
   liveCaption: {
     da: "Fra Noget Bedre Festival, Silkeborg 2026",
@@ -456,7 +488,7 @@ const SHORT_BIO = {
 };
 
 module.exports = {
-  SITE, BOOKING, SOCIALS, ALBUM, MEDIA, INTRO, MEMBERS, GUESTS,
+  SITE, BOOKING, FORMS, SOCIALS, ALBUM, MEDIA, INTRO, MEMBERS, GUESTS,
   PULLQUOTE, REVIEWS, COPY, SHOWS, CLIPS, FILES, PRESS_PHOTOS,
   PAGES, UI, SHORT_BIO, SERVICES,
 };

@@ -223,6 +223,78 @@
     }
   }
 
+/* ---------- booking-modal ---------- */
+
+  var modal = document.getElementById("book");
+  if (modal) {
+    var lastFocus = null;
+    var openModal = function () {
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      document.body.style.overflow = "hidden";
+      var first = modal.querySelector("input:not([type=hidden]):not(.hp)");
+      if (first) first.focus();
+    };
+    var closeModal = function () {
+      modal.hidden = true;
+      document.body.style.overflow = "";
+      if (location.hash === "#book") history.replaceState(null, "", location.pathname + location.search);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+    var openers = document.querySelectorAll("[data-book-open]");
+    for (var m = 0; m < openers.length; m++)
+      openers[m].addEventListener("click", function (e) { e.preventDefault(); openModal(); });
+    var closers = modal.querySelectorAll("[data-book-close]");
+    for (var n = 0; n < closers.length; n++)
+      closers[n].addEventListener("click", closeModal);
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !modal.hidden) closeModal();
+    });
+    // Direkte link til #book åbner modalen.
+    if (location.hash === "#book") openModal();
+    window.addEventListener("hashchange", function () {
+      if (location.hash === "#book") openModal();
+    });
+  }
+
+  /* ---------- formularer ---------- */
+
+  // Sender uden at forlade siden. Uden JavaScript sender formularen som
+  // almindelig POST og Web3Forms viser sin egen kvitteringsside.
+  var forms = document.querySelectorAll("form[data-w3]");
+  for (var q = 0; q < forms.length; q++) {
+    forms[q].addEventListener("submit", function (e) {
+      var form = this;
+      var msg = form.querySelector("[data-msg]");
+      var btn = form.querySelector("[type=submit]");
+      if (!window.fetch || !msg) return;
+      e.preventDefault();
+      var show = function (text, state) {
+        msg.textContent = text;
+        msg.hidden = false;
+        msg.setAttribute("data-state", state);
+      };
+      show(msg.getAttribute("data-sending"), "sending");
+      if (btn) btn.disabled = true;
+      fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.success) {
+            show(msg.getAttribute("data-ok"), "ok");
+            form.reset();
+          } else {
+            show(msg.getAttribute("data-err"), "err");
+          }
+        })
+        .catch(function () { show(msg.getAttribute("data-err"), "err"); })
+        .then(function () { if (btn) btn.disabled = false; });
+    });
+  }
+
   /* ---------- Spotify ---------- */
 
   // Afspilleren er indlejret direkte med loading="lazy"; ingen facade at hydrere.
