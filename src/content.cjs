@@ -159,8 +159,8 @@ const REVIEWS = [
 const COPY = {
   heroKicker: { da: "Jazz beats electronica live", en: "Jazz beats electronica live" },
   heroLede: {
-    da: "Albummet We Dream In Low Fidelity er ude nu.",
-    en: "The album We Dream In Low Fidelity is out now.",
+    da: "Albummet We Dream In Low Fidelity er ude nu",
+    en: "The album We Dream In Low Fidelity is out now",
   },
   nameStory: {
     da: `Hjertet — ofte opfattet som det mest menneskelige, biologiske og analoge — er styret af elektriske impulser. Et hjerteslag kan beskrives som en sinuskurve, den samme grundform som ligger til grund for en synthesizer.`,
@@ -171,6 +171,8 @@ const COPY = {
 const SHOWS = [
   {
     name: "CPH Jazz Festival",
+    // Kort navn på knappen, fuldt navn på selve videoen.
+    videoName: "Copenhagen Jazz Festival",
     meta: { da: "København 5. juli 2026", en: "Copenhagen 5 July 2026" },
     video: "assets/cph-jazz-festival.mp4",
     poster: "assets/cph-jazz-festival.jpg",
@@ -211,6 +213,14 @@ const CLIPS = [
       en: "Album release show in Ry, 18 April 2026",
     },
   },
+];
+
+// Listen af koncerter i tekstform på forsiden. Navnene linker til det
+// tilhørende klip på Video-siden. Nyeste øverst.
+const SHOW_LIST = [
+  { date: "31.07.26", name: "Noget Bedre Festival", city: { da: "Silkeborg", en: "Silkeborg" }, anchor: "noget-bedre-festival" },
+  { date: "05.07.26", name: "Copenhagen Jazz Festival", city: { da: "København", en: "Copenhagen" }, anchor: "cph-jazz-festival" },
+  { date: "18.04.26", name: "Release Koncert i Ry", city: { da: "Ry", en: "Ry" }, anchor: "release-koncert" },
 ];
 
 const FILES = [
@@ -392,6 +402,11 @@ const UI = {
   newRelease: { da: "Ny udgivelse", en: "New release" },
   releases: { da: "Udgivelser", en: "Releases" },
   watch: { da: "Se bandet", en: "Watch" },
+  latestShows: { da: "Seneste koncerter", en: "Latest shows" },
+  upcomingNote: {
+    da: "Kommende koncerter bliver offentliggjort her",
+    en: "Upcoming shows will be announced here",
+  },
   aboutEyebrow: { da: "Om bandet", en: "About" },
   aboutTitle: {
     da: "Når maskine og menneske slår i takt",
@@ -489,6 +504,6 @@ const SHORT_BIO = {
 
 module.exports = {
   SITE, BOOKING, FORMS, SOCIALS, ALBUM, MEDIA, INTRO, MEMBERS, GUESTS,
-  PULLQUOTE, REVIEWS, COPY, SHOWS, CLIPS, FILES, PRESS_PHOTOS,
+  PULLQUOTE, REVIEWS, COPY, SHOWS, CLIPS, SHOW_LIST, FILES, PRESS_PHOTOS,
   PAGES, UI, SHORT_BIO, SERVICES,
 };

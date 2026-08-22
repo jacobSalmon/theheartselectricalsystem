@@ -238,6 +238,26 @@ function bookBtn(lang, cls) {
   return `<a class="btn ${cls} btn--mono" href="#book" data-book-open>${esc(C.UI.bookUs[lang])}</a>`;
 }
 
+function showList(lang) {
+  const t = (k) => C.UI[k][lang];
+  return (
+    '<section class="sec shows">' +
+    `<p class="mono mono--wide">${esc(t("latestShows"))}</p>` +
+    '<ul class="shows__l">' +
+    C.SHOW_LIST.map(
+      (s) =>
+        '<li>' +
+        `<span class="shows__d">${esc(s.date)}</span>` +
+        `<a class="shows__n" href="${esc(href(lang, "video"))}#${esc(s.anchor)}">${esc(s.name)}</a>` +
+        `<span class="shows__c">${esc(s.city[lang])}</span>` +
+        '</li>'
+    ).join("") +
+    "</ul>" +
+    `<p class="mono mono--quiet">${esc(t("upcomingNote"))}</p>` +
+    "</section>"
+  );
+}
+
 function reviewBand(lang) {
   return (
     '<section class="sec sec--cyan revband">' +
@@ -398,7 +418,7 @@ function homePage(lang) {
           href(lang, "video")
         )}" data-show="${i}" data-video="${esc(A(lang, s.video))}" data-poster="${esc(
           A(lang, s.poster)
-        )}" data-name="${esc(s.name)}" data-meta="${esc(s.meta[lang])}">` +
+        )}" data-name="${esc(s.videoName || s.name)}" data-meta="${esc(s.meta[lang])}">` +
         `<span class="card__t">${esc(s.name)}</span><span class="mono">${esc(s.meta[lang])}</span></a>`
     ).join("") +
     "</div>" +
@@ -409,7 +429,7 @@ function homePage(lang) {
       id: "koncert",
       wellClass: "well--picked",
       body:
-        `<p class="well__title" data-name>${esc(s0.name)}</p>` +
+        `<p class="well__title" data-name>${esc(s0.videoName || s0.name)}</p>` +
         `<p class="mono" data-meta>${esc(s0.meta[lang])}</p>`,
     }) +
     "</section>";
@@ -429,7 +449,7 @@ function homePage(lang) {
     `<a class="btn btn--cream" href="${esc(href(lang, "musik"))}">${esc(t("stream"))}</a>` +
     "</div></div></section>";
 
-  return hero + story + quote + picker + album + reviewBand(lang);
+  return hero + story + quote + showList(lang) + picker + album + reviewBand(lang);
 }
 
 function musicPage(lang) {
@@ -488,6 +508,7 @@ function videoPage(lang) {
         video: c.video,
         poster: c.poster,
         ratio: "16/9",
+        id: c.video.replace("assets/", "").replace(".mp4", ""),
         body:
           `<p class="well__title">${esc(c.title[lang])}</p>` +
           `<p class="mono">${esc(c.meta[lang])}</p>`,
