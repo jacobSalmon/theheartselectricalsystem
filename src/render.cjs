@@ -314,14 +314,16 @@ function homePage(lang) {
   const story = photoWell(lang, {
     src: C.MEDIA.pressPhoto,
     mobileSrc: C.MEDIA.pressPhotoMobileHome,
-    position: "center 35%",
-    h: "460px",
+    position: "center 22%",
+    h: "620px",
     rule: true,
-    wellClass: "well--photo",
+    wellClass: "well--photo well--story",
     body:
       `<h2 class="h h--m">${esc(t("jazz2026"))}</h2>` +
+      "<div>" +
       `<p class="well__lede">${esc(C.COPY.nameStory[lang])}</p>` +
-      `<a class="ulink" href="${esc(href(lang, "om"))}">${esc(t("moreAbout"))}</a>`,
+      `<a class="ulink" href="${esc(href(lang, "om"))}">${esc(t("moreAbout"))}</a>` +
+      "</div>",
   });
 
   const s0 = C.SHOWS[0];
@@ -366,7 +368,7 @@ function homePage(lang) {
     `<a class="btn btn--cream" href="${esc(href(lang, "musik"))}">${esc(t("stream"))}</a>` +
     "</div></div></section>";
 
-  return hero + quote + story + picker + album + reviewBand(lang);
+  return hero + story + quote + picker + album + reviewBand(lang);
 }
 
 function musicPage(lang) {
