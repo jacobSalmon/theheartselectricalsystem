@@ -84,7 +84,9 @@ button { font: inherit; color: inherit; }
 .h--xl { font-size: clamp(38px, 8.2vw, 88px); line-height: 0.9; letter-spacing: -0.035em; max-width: 16ch; }
 .h--l  { font-size: clamp(30px, 6vw, 46px);   line-height: 1;   letter-spacing: -0.03em; }
 /* Bandnavnet er heroens overskrift; albumtitlen står som underrubrik under. */
-.h--hero { font-size: clamp(34px, 4.6vw, 60px); line-height: 0.96; max-width: 20ch; }
+.h--hero { font-size: clamp(32px, 4.2vw, 56px); line-height: 0.96; max-width: none; }
+/* "Electrical System" skal stå på én linje. */
+.h--hero .orange { white-space: nowrap; }
 .h--m  { font-size: clamp(27px, 5vw, 40px);   line-height: 0.98; letter-spacing: -0.03em; }
 .h--s  { font-size: clamp(24px, 4vw, 34px);   line-height: 1;   letter-spacing: -0.03em; }
 .h--xs { font-size: clamp(21px, 3vw, 26px);   line-height: 1.05; letter-spacing: -0.02em; }
@@ -739,7 +741,7 @@ button { font: inherit; color: inherit; }
   /* Hero-teksten stopper før knapperne. */
   .well--hero .well__body { padding-right: 104px; }
   /* Bandnavnet er langt: mindre grad, så "Electrical System" ikke presses. */
-  .h--hero { font-size: clamp(25px, 7.4vw, 36px); max-width: none; }
+  .h--hero { font-size: clamp(25px, 7.4vw, 36px); }
   .hero__sub { font-size: 15px; margin-top: 14px; }
 
   /* Titlen lægger sig under klippet i stedet for oven på det. */
