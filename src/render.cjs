@@ -345,8 +345,8 @@ function homePage(lang) {
     wellClass: "well--hero",
     body:
       `<p class="mono mono--wide">${esc(C.COPY.heroKicker[lang])}</p>` +
-      '<h1 class="h h--xl">We Dream In<br><span class="orange">Low Fidelity</span></h1>' +
-      `<p class="well__lede">${esc(C.COPY.heroLede[lang])}</p>` +
+      '<h1 class="h h--xl h--hero">The Heart\u2019s<br><span class="orange">Electrical System</span></h1>' +
+      `<p class="hero__sub">${esc(C.COPY.heroLede[lang])}</p>` +
       `<div class="btns btns--gap">${bookBtn(lang, "btn--warm")}</div>`,
   });
 
