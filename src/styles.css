@@ -471,23 +471,35 @@ button { font: inherit; color: inherit; }
 
 /* Forsidens "Jazz anno 2026": høj beskæring, teksten ligger på fotoet med
    overskrift til venstre og brødtekst til højre. */
+/* Forsidens "Jazz med elektronisk hjerterytme": høj beskæring, teksten ligger på
+   fotoet med overskrift til venstre og brødtekst til højre. Flex, ikke grid, så
+   brødteksten falder under overskriften når pladsen slipper op — aldrig oven i. */
 .well--story .well__body {
-  display: grid;
-  grid-template-columns: minmax(0, 20ch) minmax(0, 46ch);
-  justify-content: start;
-  gap: clamp(28px, 4vw, 56px);
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(20px, 3vw, 56px);
+  align-items: flex-start;
   padding-bottom: 42px;
 }
+.well--story .h--m {
+  flex: 0 1 auto;
+  max-width: 20ch;
+  font-size: clamp(28px, 3.2vw, 44px);
+  line-height: 0.98;
+}
+.well--story .well__body > div {
+  flex: 1 1 34ch;
+  min-width: 0;
+  max-width: 46ch;
+}
+.well--story .well__lede { margin-top: 0; max-width: none; }
 .well--story .well__grad {
   background: linear-gradient(to top, rgba(26, 21, 18, 0.93) 0%, rgba(26, 21, 18, 0.78) 22%, rgba(26, 21, 18, 0.22) 46%, rgba(26, 21, 18, 0.05) 100%);
 }
-.well--story .h--m { line-height: 0.98; }
-.well--story .well__lede { margin-top: 0; max-width: none; }
 
-/* Under 1100 px er der ikke plads til to spalter oven på fotoet. */
-@media (max-width: 1100px) {
-  .well--story .well__body { grid-template-columns: 1fr; gap: 0; padding-bottom: 30px; }
+/* Under 1100 px stables de to spalter. */@media (max-width: 1100px) {
+  .well--story .well__body { display: block; padding-bottom: 30px; }
+  .well--story .h--m { max-width: none; }
   .well--story .well__lede { margin-top: 14px; max-width: 40ch; }
 }
 
