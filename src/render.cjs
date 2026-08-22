@@ -780,11 +780,35 @@ function robots() {
 }
 
 function favicon() {
+  // Pixelhjerte i sitets orange, tegnet på et 12×10-net så kanterne følger
+  // pixelnettet og formen holder ved 16 px i browserfanen.
+  const rows = [
+    "..##....##..",
+    ".####..####.",
+    "############",
+    "############",
+    "############",
+    ".##########.",
+    "..########..",
+    "...######...",
+    "....####....",
+    ".....##.....",
+  ];
+  const cell = 5, ox = 2, oy = 7;
+  let px = "";
+  rows.forEach((row, y) => {
+    let x = 0;
+    while (x < row.length) {
+      if (row[x] === "#") {
+        let n = 1;
+        while (row[x + n] === "#") n++;
+        px += `<rect x="${ox + x * cell}" y="${oy + y * cell}" width="${n * cell}" height="${cell}" fill="#FF7A2F"/>`;
+        x += n;
+      } else x++;
+    }
+  });
   return (
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' +
-    '<rect width="64" height="64" fill="#1A1512"/>' +
-    '<path d="M4 34h10l5-14 6 26 6-32 6 24 5-10h14" fill="none" stroke="#FF7A2F" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
-    "</svg>\n"
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">' + px + "</svg>\n"
   );
 }
 

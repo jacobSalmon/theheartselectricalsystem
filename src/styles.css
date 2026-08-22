@@ -293,6 +293,8 @@ button { font: inherit; color: inherit; }
 .btn:hover { color: var(--ink-900); background: var(--cream-100); border-color: var(--cream-100); }
 .btn--cream:hover { background: var(--orange-500); border-color: var(--orange-500); }
 .btn--ink:hover { background: var(--cream-100); color: var(--ink-900); }
+/* Orange knap på cremefarvet baggrund må ikke hover til creme — så forsvinder den. */
+.sec--cream .btn--warm:hover { background: var(--ink-900); color: var(--cream-100); border-color: var(--ink-900); }
 
 .btns { display: flex; flex-wrap: wrap; margin-top: 22px; }
 .btns--gap { gap: 12px; margin-top: 20px; }
