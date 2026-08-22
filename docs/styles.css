@@ -738,6 +738,9 @@ button { font: inherit; color: inherit; }
   .well__ctrls [data-sound] span { display: none; }
   /* Hero-teksten stopper før knapperne. */
   .well--hero .well__body { padding-right: 104px; }
+  /* Bandnavnet er langt: mindre grad, så "Electrical System" ikke presses. */
+  .h--hero { font-size: clamp(25px, 7.4vw, 36px); max-width: none; }
+  .hero__sub { font-size: 15px; margin-top: 14px; }
 
   /* Titlen lægger sig under klippet i stedet for oven på det. */
   .clips .well__grad,
