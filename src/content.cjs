@@ -156,8 +156,8 @@ const COPY = {
     en: "The album We Dream In Low Fidelity is out now.",
   },
   nameStory: {
-    da: `Hjertet — ofte opfattet som det mest menneskelige, biologiske og analoge — fungerer gennem elektriske impulser. Et hjerteslag kan beskrives som en sinuskurve, den samme grundform som ligger til grund for en synthesizer.`,
-    en: `The heart — usually thought of as the most human, biological and analogue thing there is — runs on electrical impulses. A heartbeat can be described as a sine wave, the same shape that underpins a synthesizer.`,
+    da: `Hjertet — ofte opfattet som det mest menneskelige, biologiske og analoge — er styret af elektriske impulser. Et hjerteslag kan beskrives som en sinuskurve, den samme grundform som ligger til grund for en synthesizer.`,
+    en: `The heart — usually thought of as the most human, biological and analogue thing there is — is driven by electrical impulses. A heartbeat can be described as a sine wave, the same shape that underpins a synthesizer.`,
   },
 };
 
@@ -390,7 +390,7 @@ const UI = {
     da: "Når maskine og menneske slår i takt",
     en: "When machine and human play to the same beat",
   },
-  jazz2026: { da: "Jazz anno 2026", en: "Jazz in 2026" },
+  jazz2026: { da: "Jazz med elektronisk hjerterytme", en: "Jazz with an electronic heartbeat" },
   epkLede: {
     da: "Alt materiale til presse og arrangører, samlet ét sted.",
     en: "Everything press and promoters need, in one place.",

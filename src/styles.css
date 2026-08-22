@@ -482,7 +482,7 @@ button { font: inherit; color: inherit; }
 .well--story .well__grad {
   background: linear-gradient(to top, rgba(26, 21, 18, 0.93) 0%, rgba(26, 21, 18, 0.78) 22%, rgba(26, 21, 18, 0.22) 46%, rgba(26, 21, 18, 0.05) 100%);
 }
-.well--story .h--m { max-width: 9ch; line-height: 0.98; }
+.well--story .h--m { max-width: 16ch; line-height: 0.98; }
 .well--story .well__lede { margin-top: 0; max-width: none; }
 
 .ulink {
