@@ -45,7 +45,7 @@ const SERVICES = [
   },
   {
     name: "Apple Music",
-    url: "https://music.apple.com/us/album/we-dream-in-low-fidelity/1886690925",
+    url: "https://music.apple.com/dk/album/we-dream-in-low-fidelity/1886690925",
   },
   {
     name: "YouTube Music",
@@ -191,13 +191,10 @@ const SHOWS = [
 
 const CLIPS = [
   {
-    video: "assets/release-koncert.mp4",
-    poster: "assets/release-koncert.jpg",
-    title: { da: "Mød bandet", en: "Meet the band" },
-    meta: {
-      da: "Album release koncert i Ry 18. april 2026",
-      en: "Album release show in Ry, 18 April 2026",
-    },
+    video: "assets/cph-jazz-festival.mp4",
+    poster: "assets/cph-jazz-festival.jpg",
+    title: { da: "Copenhagen Jazz Festival", en: "Copenhagen Jazz Festival" },
+    meta: { da: "København 5. juli 2026", en: "Copenhagen 5 July 2026" },
   },
   {
     video: "assets/noget-bedre-festival.mp4",
@@ -206,10 +203,13 @@ const CLIPS = [
     meta: { da: "Silkeborg 31. juli 2026", en: "Silkeborg 31 July 2026" },
   },
   {
-    video: "assets/cph-jazz-festival.mp4",
-    poster: "assets/cph-jazz-festival.jpg",
-    title: { da: "CPH Jazz Festival", en: "CPH Jazz Festival" },
-    meta: { da: "København 5. juli 2026", en: "Copenhagen 5 July 2026" },
+    video: "assets/release-koncert.mp4",
+    poster: "assets/release-koncert.jpg",
+    title: { da: "Mød bandet", en: "Meet the band" },
+    meta: {
+      da: "Album release koncert i Ry 18. april 2026",
+      en: "Album release show in Ry, 18 April 2026",
+    },
   },
 ];
 
@@ -221,7 +221,7 @@ const FILES = [
     href: "assets/press/pressemeddelelse-we-dream-in-low-fidelity.pdf",
   },
   { da: "Alle pressefotos (ZIP)", en: "All press photos (ZIP)", href: "assets/press/thes-pressefotos.zip" },
-  { da: "Teknisk rider (JPEG)", en: "Tech rider (JPEG)", href: "assets/press/thes-tech-rider.jpeg" },
+  { da: "Teknisk rider (PDF)", en: "Tech rider (PDF)", href: "assets/press/thes-tech-rider.pdf" },
   { da: "Logo (PDF)", en: "Logo (PDF)", href: "assets/THES_Logo.pdf" },
   {
     da: "Album cover (PNG, 3000×3000)",
