@@ -151,7 +151,9 @@ function photoWell(lang, o) {
     `<div class="well__box"${o.h ? ` style="--h:${o.h}"` : ""}>` +
     (o.mobileSrc
       ? `<picture>` +
-        `<source media="(max-width: 760px)" srcset="${esc(A(lang, o.mobileSrc))}">` +
+        // Skifter kun på berøringsenheder — ikke når et browservindue på en
+        // computer gøres smalt. `pointer: coarse` er sand på telefon og tablet.
+        `<source media="(pointer: coarse) and (max-width: 900px)" srcset="${esc(A(lang, o.mobileSrc))}">` +
         `<img class="well__v" src="${esc(A(lang, o.src))}" alt="${esc(o.alt || "")}"${
           o.position ? ` style="object-position:${o.position}"` : ""
         }${o.eager ? "" : ' loading="lazy"'} decoding="async">` +
