@@ -2,7 +2,7 @@
 // Bandtekster er ordret fra den leverede biografi og pressemeddelelse.
 // [CHECK] markerer noget der er udfyldt af mig og bør bekræftes.
 
-const SITE = "https://jacobsalmon.github.io/theheartselectricalsystem";
+const SITE = "https://theheartselectricalsystem.dk";
 
 const BOOKING = {
   name: "Jacob Salmon",

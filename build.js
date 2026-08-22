@@ -36,5 +36,7 @@ write("favicon.svg", R.favicon());
 write("styles.css", fs.readFileSync(path.join(SRC, "styles.css"), "utf8"));
 write("app.js", fs.readFileSync(path.join(SRC, "app.js"), "utf8"));
 write(".nojekyll", "");
+// Fortæller GitHub Pages hvilket domæne sitet svarer på. Skal blive stående.
+write("CNAME", "theheartselectricalsystem.dk\n");
 
 console.log("Færdig: " + n + " sider (7 danske, 7 engelske) i docs/");

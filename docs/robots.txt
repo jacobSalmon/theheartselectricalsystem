@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jacobsalmon.github.io/theheartselectricalsystem/sitemap.xml
+Sitemap: https://theheartselectricalsystem.dk/sitemap.xml
