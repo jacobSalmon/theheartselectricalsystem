@@ -172,20 +172,18 @@ function photoWell(lang, o) {
 function newsletterBand(lang) {
   const t = (k) => C.UI[k][lang];
   return (
-    '<section class="sec sec--cyan nlband">' +
-    `<div><h2 class="h h--m">${esc(t("nlTitle"))}</h2><p class="lede lede--dark">${esc(
+    '<section class="sec sec--well nlband">' +
+    `<div><h2 class="h h--m">${esc(t("nlTitle"))}</h2><p class="lede">${esc(
       t("nlLede")
     )}</p></div>` +
-    `<form class="nlband__form" data-w3 action="${esc(C.FORMS.endpoint)}" method="post">` +
-    `<input type="hidden" name="access_key" value="${esc(C.FORMS.key)}">` +
-    '<input type="hidden" name="subject" value="Nyhedsbrev — ny tilmelding">' +
-    '<input type="hidden" name="from_name" value="Website — nyhedsbrev">' +
-    '<input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">' +
-    `<input class="input" type="email" name="email" required placeholder="${esc(
+    `<form class="nlband__form" data-ml action="${esc(C.NEWSLETTER.endpoint)}" method="post" target="_blank">` +
+    '<input type="hidden" name="ml-submit" value="1">' +
+    '<input type="hidden" name="anticsrf" value="true">' +
+    `<input class="input input--solid" type="email" name="fields[email]" required placeholder="${esc(
       t("yourEmail")
     )}" aria-label="${esc(t("yourEmail"))}">` +
     `<button class="btn btn--warm" type="submit">${esc(t("signUp"))}</button>` +
-    `<p class="fmsg fmsg--dark" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(t("nlErr"))}" data-sending="${esc(t("fSending"))}" hidden></p>` +
+    `<p class="fmsg" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(t("nlErr"))}" data-sending="${esc(t("fSending"))}" hidden></p>` +
     "</form></section>"
   );
 }
@@ -261,7 +259,7 @@ function showList(lang) {
 function reviewBand(lang) {
   return (
     '<section class="sec sec--cyan revband">' +
-    `<p class="mono mono--wide">${esc(C.UI.reviews[lang])}</p>` +
+    `<p class="revband__label">${esc(C.UI.reviews[lang])}</p>` +
     '<div class="revband__links">' +
     C.REVIEWS.map(
       (r) =>
@@ -330,13 +328,11 @@ function footer(lang) {
     '<footer class="ftr">' +
     '<div class="ftr__top">' +
     `<div class="ftr__soc">${socialLinks("icon")}</div>` +
-    `<form class="nl" data-w3 action="${esc(C.FORMS.endpoint)}" method="post">` +
-    `<input type="hidden" name="access_key" value="${esc(C.FORMS.key)}">` +
-    '<input type="hidden" name="subject" value="Nyhedsbrev — ny tilmelding">' +
-    '<input type="hidden" name="from_name" value="Website — nyhedsbrev">' +
-    '<input type="checkbox" name="botcheck" class="hp" tabindex="-1" aria-hidden="true">' +
+    `<form class="nl" data-ml action="${esc(C.NEWSLETTER.endpoint)}" method="post" target="_blank">` +
+    '<input type="hidden" name="ml-submit" value="1">' +
+    '<input type="hidden" name="anticsrf" value="true">' +
     `<span class="mono mono--quiet">${esc(t("newsletter"))}</span>` +
-    `<input type="email" name="email" required placeholder="${esc(t("yourEmail"))}" aria-label="${esc(
+    `<input type="email" name="fields[email]" required placeholder="${esc(t("yourEmail"))}" aria-label="${esc(
       t("nlSignUp")
     )}">` +
     `<button type="submit">${esc(t("signUp"))}</button>` +

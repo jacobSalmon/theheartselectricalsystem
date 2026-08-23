@@ -256,6 +256,7 @@ button { font: inherit; color: inherit; }
 .sec--prose { padding-block: var(--section-y); }
 .sec--raised { background: var(--ink-800); }
 .sec--cool { background: var(--well-video); }
+.sec--well { background: var(--well-video); color: var(--cream-100); }
 .sec--cyan { background: var(--cyan-400); color: var(--ink-900); }
 .sec--cream { background: var(--cream-100); color: var(--ink-900); }
 .sec--orange { background: var(--orange-500); color: var(--ink-900); }
@@ -314,6 +315,7 @@ button { font: inherit; color: inherit; }
   font-size: 15px;
   min-height: 48px;
 }
+.input--solid { background: #fff; }
 
 /* ---------- medie-felt ---------- */
 
@@ -636,11 +638,12 @@ button { font: inherit; color: inherit; }
 
 /* Nyhedsbrevs-b\u00e5ndet f\u00f8lger direkte efter anmelder-b\u00e5ndet i samme cyan,
    s\u00e5 gr\u00e6nsen er usynlig og kun \u00e9n af dem skal give luft. */
-.nlband { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: center; padding-top: 0; }
+.nlband { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: center; padding-block: calc(var(--section-y) * 1.9); }
+.nlband .lede { max-width: 34ch; opacity: 0.7; }
 .nlband__form { display: flex; gap: 12px; flex-wrap: wrap; }
 
 .revband { display: flex; align-items: center; flex-wrap: wrap; gap: 26px; padding-block: var(--band-y); }
-.revband .mono { color: inherit; opacity: 0.7; }
+.revband__label { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: 0.02em; margin: 0; }
 .revband__links { display: flex; flex-wrap: wrap; gap: 22px; }
 .revband__links a {
   font-family: var(--font-display);

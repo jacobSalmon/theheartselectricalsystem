@@ -259,9 +259,9 @@
 
   /* ---------- formularer ---------- */
 
-  // Sender uden at forlade siden. Uden JavaScript sender formularen som
-  // almindelig POST og Web3Forms viser sin egen kvitteringsside.
-  var forms = document.querySelectorAll("form[data-w3]");
+  // Nyhedsbrevet går til MailerLite, resten til Web3Forms. Uden JavaScript
+  // sender begge som almindelig POST og tjenesten viser sin egen kvittering.
+  var forms = document.querySelectorAll("form[data-w3], form[data-ml]");
   for (var q = 0; q < forms.length; q++) {
     forms[q].addEventListener("submit", function (e) {
       var form = this;
@@ -276,6 +276,18 @@
       };
       show(msg.getAttribute("data-sending"), "sending");
       if (btn) btn.disabled = true;
+      // MailerLite svarer ikke med CORS-headere, så svaret kan ikke læses.
+      // Tilmeldingen registreres, og bekræftelsesmailen er selve kvitteringen.
+      if (form.hasAttribute("data-ml")) {
+        fetch(form.action, { method: "POST", mode: "no-cors", body: new FormData(form) })
+          .then(function () {
+            show(msg.getAttribute("data-ok"), "ok");
+            form.reset();
+          })
+          .catch(function () { show(msg.getAttribute("data-err"), "err"); })
+          .then(function () { if (btn) btn.disabled = false; });
+        return;
+      }
       fetch(form.action, {
         method: "POST",
         headers: { Accept: "application/json" },

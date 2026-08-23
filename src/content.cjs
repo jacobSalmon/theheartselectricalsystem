@@ -17,6 +17,13 @@ const FORMS = {
   endpoint: "https://api.web3forms.com/submit",
 };
 
+// Nyhedsbrevet kører på MailerLite med double opt-in. Vi bruger vores eget
+// markup og CSS og poster direkte til formularens endpoint.
+const NEWSLETTER = {
+  endpoint:
+    "https://assets.mailerlite.com/jsonp/2591782/forms/196598663231833122/subscribe",
+};
+
 const SOCIALS = {
   instagram: "https://www.instagram.com/theheartselectricalsystem",
   facebook: "https://www.facebook.com/theheartselectricalsystem",
@@ -460,7 +467,10 @@ const UI = {
     en: "The message could not be sent. Please email us instead.",
   },
   orMail: { da: "Skriv i stedet en mail", en: "Send an email instead" },
-  nlOk: { da: "Tak — du er tilmeldt.", en: "Thank you — you are signed up." },
+  nlOk: {
+    da: "Tak — tjek din mail og bekræft tilmeldingen.",
+    en: "Thanks — check your inbox to confirm.",
+  },
   nlErr: { da: "Tilmeldingen kunne ikke gennemføres.", en: "The sign-up could not be completed." },
   messenger: { da: "Skriv på Messenger", en: "Message on Messenger" },
   liveCaption: {
@@ -503,7 +513,7 @@ const SHORT_BIO = {
 };
 
 module.exports = {
-  SITE, BOOKING, FORMS, SOCIALS, ALBUM, MEDIA, INTRO, MEMBERS, GUESTS,
+  SITE, BOOKING, FORMS, NEWSLETTER, SOCIALS, ALBUM, MEDIA, INTRO, MEMBERS, GUESTS,
   PULLQUOTE, REVIEWS, COPY, SHOWS, CLIPS, SHOW_LIST, FILES, PRESS_PHOTOS,
   PAGES, UI, SHORT_BIO, SERVICES,
 };
