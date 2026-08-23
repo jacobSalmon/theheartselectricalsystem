@@ -129,8 +129,8 @@ const MEMBERS = [
     photo: "assets/portrait-jacob-web.jpg",
     role: { da: "Klaver, synthesizer, beats", en: "Piano, synthesizer, beats" },
     bio: {
-      da: `Pianist, komponist og producer fra Danmark. Arbejder i krydsfeltet mellem jazz, elektronisk musik og beats og er uddannet producer og mixtekniker fra School of Audio Engineering i London. Efter en længere periode med fokus på klaver, jazzimprovisation og projekter med sangere har han de senere år vendt tilbage til produktion og komposition i et mere kollektivt, instrumentalt jazzformat. Med The Heart's Electrical System samler han musikere fra den aarhusianske jazzscene i et nutidigt, groovebaseret udtryk.`,
-      en: `Pianist, composer and producer from Denmark. Works between jazz, electronic music and beats, and trained as a producer and mixing engineer at the School of Audio Engineering in London. After years focused on piano, jazz improvisation and projects with singers, he has returned to production and composition in a collective, instrumental jazz format. With The Heart's Electrical System he gathers musicians from the Aarhus jazz scene into a contemporary, groove-based sound.`,
+      da: `Pianist, komponist og producer bosat i Ry. Arbejder i krydsfeltet mellem jazz, elektronisk musik og beats og er uddannet producer og mixtekniker fra School of Audio Engineering i London. Efter en længere periode med fokus på klaver, jazzimprovisation og projekter med sangere har han de senere år vendt tilbage til produktion og komposition i et mere kollektivt, instrumentalt jazzformat. Med The Heart's Electrical System samler han musikere fra den aarhusianske jazzscene i et nutidigt, groovebaseret udtryk.`,
+      en: `Pianist, composer and producer based in Ry, Denmark. Works between jazz, electronic music and beats, and trained as a producer and mixing engineer at the School of Audio Engineering in London. After years focused on piano, jazz improvisation and projects with singers, he has returned to production and composition in a collective, instrumental jazz format. With The Heart's Electrical System he gathers musicians from the Aarhus jazz scene into a contemporary, groove-based sound.`,
     },
   },
 ];
@@ -484,6 +484,11 @@ const UI = {
   },
   buyAtGateway: { da: "Køb vinyl hos Gateway", en: "Buy vinyl at Gateway" },
   nlTitle: { da: "Modtag nyhedsbrev", en: "Get the newsletter" },
+  showsAlert: {
+    da: "Få besked når vi offentliggør nye koncerter",
+    en: "Get an email when we announce new shows",
+  },
+  alertSend: { da: "Send", en: "Send" },
   nlLede: {
     da: "Vi skriver kun når der er noget nyt: udgivelser, videoer og koncerter.",
     en: "We only write when there is something new: releases, videos and shows.",

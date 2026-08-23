@@ -169,22 +169,58 @@ function photoWell(lang, o) {
   );
 }
 
-function newsletterBand(lang) {
+// Alle nyhedsbrevsfelter deler samme formular. Kun rammen skifter.
+function nlForm(lang, o) {
   const t = (k) => C.UI[k][lang];
   return (
-    '<section class="sec sec--well nlband">' +
-    `<div><h2 class="h h--m">${esc(t("nlTitle"))}</h2><p class="lede">${esc(
-      t("nlLede")
-    )}</p></div>` +
-    `<form class="nlband__form" data-ml action="${esc(C.NEWSLETTER.endpoint)}" method="post" target="_blank">` +
+    `<form class="${o.formClass}" data-ml action="${esc(C.NEWSLETTER.endpoint)}" method="post" target="_blank">` +
     '<input type="hidden" name="ml-submit" value="1">' +
     '<input type="hidden" name="anticsrf" value="true">' +
     `<input class="input input--solid" type="email" name="fields[email]" required placeholder="${esc(
       t("yourEmail")
-    )}" aria-label="${esc(t("yourEmail"))}">` +
-    `<button class="btn btn--warm" type="submit">${esc(t("signUp"))}</button>` +
-    `<p class="fmsg" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(t("nlErr"))}" data-sending="${esc(t("fSending"))}" hidden></p>` +
-    "</form></section>"
+    )}" aria-label="${esc(o.aria || t("nlSignUp"))}">` +
+    `<button class="btn btn--warm" type="submit">${esc(o.button || t("signUp"))}</button>` +
+    `<p class="fmsg${o.msgClass ? " " + o.msgClass : ""}" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(
+      t("nlErr")
+    )}" data-sending="${esc(t("fSending"))}" hidden></p>` +
+    "</form>"
+  );
+}
+
+function newsletterBand(lang) {
+  const t = (k) => C.UI[k][lang];
+  return (
+    '<section class="sec sec--well nlband">' +
+    `<div><h2 class="h h--m">${esc(t("nlTitle"))}</h2><p class="lede">${esc(t("nlLede"))}</p></div>` +
+    nlForm(lang, { formClass: "nlband__form" }) +
+    "</section>"
+  );
+}
+
+// Smal udgave til en spalte: overskrift, tekst og felt stakket.
+function newsletterCard(lang) {
+  const t = (k) => C.UI[k][lang];
+  return (
+    '<div class="nlcard">' +
+    `<h2 class="h h--xs">${esc(t("nlTitle"))}</h2>` +
+    `<p class="nlcard__lede">${esc(t("nlLede"))}</p>` +
+    nlForm(lang, { formClass: "nlcard__form" }) +
+    "</div>"
+  );
+}
+
+// Feltet i koncertlisten nævner ikke nyhedsbrevet.
+function showsAlert(lang) {
+  const t = (k) => C.UI[k][lang];
+  return (
+    '<div class="shows__alert">' +
+    `<p class="shows__alerttx">${esc(t("showsAlert"))}</p>` +
+    nlForm(lang, {
+      formClass: "shows__form",
+      button: t("alertSend"),
+      aria: t("showsAlert"),
+    }) +
+    "</div>"
   );
 }
 
@@ -252,6 +288,7 @@ function showList(lang) {
     ).join("") +
     "</ul>" +
     `<p class="mono mono--quiet">${esc(t("upcomingNote"))}</p>` +
+    showsAlert(lang) +
     "</section>"
   );
 }
@@ -489,6 +526,7 @@ function musicPage(lang) {
       t("buyVinylTail")
     )}</p>` +
     `<p class="mono mono--quiet">${esc(t("singleNote"))}</p>` +
+    newsletterCard(lang) +
     "</div></div></section>"
   );
 }
@@ -510,7 +548,8 @@ function videoPage(lang) {
           `<p class="mono">${esc(c.meta[lang])}</p>`,
       })
     ).join("") +
-    "</div></section>"
+    "</div></section>" +
+    newsletterBand(lang)
   );
 }
 
@@ -631,7 +670,12 @@ function contactPage(lang) {
     `<a href="tel:${esc(tel)}">${esc(C.BOOKING.phone)}</a></address>` +
     `<p class="contact__p">${esc(t("contactLede"))}</p>` +
     `<div class="btns btns--gap">${bookBtn(lang, "btn--warm")}</div>` +
-    "</div></div></section>" +
+    "</div>" +
+    '<div class="contact__nl">' +
+    `<h2 class="h h--s">${esc(t("nlTitle"))}</h2>` +
+    `<p class="contact__nlp">${esc(t("nlLede"))}</p>` +
+    nlForm(lang, { formClass: "contact__nlf", msgClass: "fmsg--dark" }) +
+    "</div></section>" +
     '<section class="sec sec--tight">' +
     `<p class="mono mono--wide">${esc(t("liveCaption"))}</p>` +
     '<div class="livegrid">' +

@@ -658,6 +658,38 @@ button { font: inherit; color: inherit; }
 /* ---------- kontakt ---------- */
 
 .contact { padding-block: var(--band-y) var(--section-y); }
+/* Smal nyhedsbrevsudgave til en spalte (musiksiden). */
+.nlcard { background: var(--well-video); padding: 30px 32px; margin-top: 30px; }
+.nlcard .h { margin: 0 0 8px; }
+.nlcard__lede { margin: 0 0 20px; font-size: 16px; line-height: 1.5; opacity: 0.7; max-width: 34ch; }
+.nlcard__form { display: flex; gap: 10px; flex-wrap: wrap; }
+.nlcard__form .input { min-width: 140px; font-size: 15px; padding: 13px 15px; }
+.nlcard__form .fmsg { flex-basis: 100%; }
+
+/* Feltet i koncertlisten. Samme hårstreg som resten af listen. */
+.shows__alert {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hair);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.shows__alerttx { margin: 0; font-size: 18px; line-height: 1.4; text-wrap: pretty; }
+.shows__form { display: flex; gap: 12px; flex-wrap: wrap; }
+.shows__form .input { flex: 0 1 260px; font-size: 16px; }
+.shows__form .fmsg { flex-basis: 100%; }
+
+/* Nyhedsbrevet i højre halvdel af kontaktelementet. */
+.contact { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: start; }
+.contact__nl { border-left: 2px solid rgba(26, 21, 18, 0.15); padding-left: clamp(22px, 3vw, 40px); }
+.contact__nl .h { margin: 0 0 12px; }
+.contact__nlp { margin: 0 0 22px; font-size: 17px; line-height: 1.5; max-width: 34ch; color: rgba(26, 21, 18, 0.7); }
+.contact__nlf { display: flex; gap: 12px; flex-wrap: wrap; }
+.contact__nlf .input { flex: 1 1 170px; font-size: 16px; }
+.contact__nlf .fmsg { flex-basis: 100%; }
+
 .contact__a { font-style: normal; font-size: 16px; line-height: 1.8; margin: 14px 0 0; }
 .contact__p { font-size: 16px; line-height: 1.7; max-width: 46ch; margin: 18px 0 0; text-wrap: pretty; }
 
@@ -712,7 +744,8 @@ button { font: inherit; color: inherit; }
 }
 
 @media (max-width: 900px) {
-  .grid2, .nlband, .members, .files { grid-template-columns: 1fr; }
+  .grid2, .nlband, .members, .files, .contact { grid-template-columns: 1fr; }
+  .contact__nl { border-left: 0; border-top: 2px solid rgba(26, 21, 18, 0.15); padding-left: 0; padding-top: 26px; }
   .grid2--top { margin-top: 24px; }
   .photos { grid-template-columns: repeat(2, 1fr); }
   .photos__i--wide { grid-column: span 2; }
@@ -767,6 +800,8 @@ button { font: inherit; color: inherit; }
   .btns .btn { width: auto; flex: 1 1 auto; }
   .quote__cta .btn { width: auto; flex: 0 0 auto; }
   .nl { width: 100%; }
+  .shows__alert { flex-direction: column; align-items: stretch; gap: 16px; }
+  .shows__form .input { flex: 1 1 auto; }
   .nl input { flex: 1; width: auto; }
   .ftr__top { gap: 22px; }
   .ftr__meta { flex-direction: column; gap: 8px; }
