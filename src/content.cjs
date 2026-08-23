@@ -468,8 +468,8 @@ const UI = {
   },
   orMail: { da: "Skriv i stedet en mail", en: "Send an email instead" },
   nlOk: {
-    da: "Tak — tjek din mail og bekræft tilmeldingen.",
-    en: "Thanks — check your inbox to confirm.",
+    da: "Tak! Vi har sendt dig en mail med et bekræftelseslink. Den lander nogle gange i Spam eller Reklame.",
+    en: "Thanks! We've sent you an email with a confirmation link. It sometimes lands in Spam or Promotions.",
   },
   nlErr: { da: "Tilmeldingen kunne ikke gennemføres.", en: "The sign-up could not be completed." },
   messenger: { da: "Skriv på Messenger", en: "Message on Messenger" },
