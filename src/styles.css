@@ -666,20 +666,9 @@ button { font: inherit; color: inherit; }
 .nlcard__form .input { min-width: 140px; font-size: 15px; padding: 13px 15px; }
 .nlcard__form .fmsg { flex-basis: 100%; }
 
-/* Feltet i koncertlisten. Samme hårstreg som resten af listen. */
-.shows__alert {
-  margin-top: 34px;
-  padding-top: 28px;
-  border-top: 1px solid var(--hair);
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.shows__alerttx { margin: 0; font-size: 18px; line-height: 1.4; text-wrap: pretty; }
-.shows__form { display: flex; gap: 12px; flex-wrap: wrap; }
-.shows__form .input { flex: 0 1 260px; font-size: 16px; }
-.shows__form .fmsg { flex-basis: 100%; }
+/* Feltet i koncertlisten er footerens felt, sat under listen. Listens
+   sidste række har allerede en streg, så feltet får ingen egen. */
+.shows__alert { margin-top: 26px; }
 
 /* Nyhedsbrevet i højre halvdel af kontaktelementet. */
 .contact { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); align-items: start; }
@@ -800,8 +789,7 @@ button { font: inherit; color: inherit; }
   .btns .btn { width: auto; flex: 1 1 auto; }
   .quote__cta .btn { width: auto; flex: 0 0 auto; }
   .nl { width: 100%; }
-  .shows__alert { flex-direction: column; align-items: stretch; gap: 16px; }
-  .shows__form .input { flex: 1 1 auto; }
+  .nl--shows { width: 100%; }
   .nl input { flex: 1; width: auto; }
   .ftr__top { gap: 22px; }
   .ftr__meta { flex-direction: column; gap: 8px; }
@@ -947,7 +935,6 @@ button { font: inherit; color: inherit; }
   transition: color var(--dur) var(--ease);
 }
 .shows__n:hover { color: var(--orange-500); }
-.shows .mono--quiet { margin-top: 22px; }
 
 @media (max-width: 760px) {
   .shows__l li {

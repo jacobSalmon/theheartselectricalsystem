@@ -176,10 +176,11 @@ function nlForm(lang, o) {
     `<form class="${o.formClass}" data-ml action="${esc(C.NEWSLETTER.endpoint)}" method="post" target="_blank">` +
     '<input type="hidden" name="ml-submit" value="1">' +
     '<input type="hidden" name="anticsrf" value="true">' +
-    `<input class="input input--solid" type="email" name="fields[email]" required placeholder="${esc(
+    (o.label ? `<span class="mono mono--quiet">${esc(o.label)}</span>` : "") +
+    `<input${o.plain ? "" : ' class="input input--solid"'} type="email" name="fields[email]" required placeholder="${esc(
       t("yourEmail")
     )}" aria-label="${esc(o.aria || t("nlSignUp"))}">` +
-    `<button class="btn btn--warm" type="submit">${esc(o.button || t("signUp"))}</button>` +
+    `<button${o.plain ? "" : ' class="btn btn--warm"'} type="submit">${esc(o.button || t("signUp"))}</button>` +
     `<p class="fmsg${o.msgClass ? " " + o.msgClass : ""}" data-msg data-ok="${esc(t("nlOk"))}" data-err="${esc(
       t("nlErr")
     )}" data-sending="${esc(t("fSending"))}" hidden></p>` +
@@ -214,11 +215,12 @@ function showsAlert(lang) {
   const t = (k) => C.UI[k][lang];
   return (
     '<div class="shows__alert">' +
-    `<p class="shows__alerttx">${esc(t("showsAlert"))}</p>` +
     nlForm(lang, {
-      formClass: "shows__form",
+      formClass: "nl nl--shows",
+      label: t("showsAlert"),
       button: t("alertSend"),
       aria: t("showsAlert"),
+      plain: true,
     }) +
     "</div>"
   );
@@ -287,7 +289,6 @@ function showList(lang) {
         '</li>'
     ).join("") +
     "</ul>" +
-    `<p class="mono mono--quiet">${esc(t("upcomingNote"))}</p>` +
     showsAlert(lang) +
     "</section>"
   );
