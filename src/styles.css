@@ -766,7 +766,7 @@ button { font: inherit; color: inherit; }
   .well__ctrls [data-sound] span { display: none; }
   /* Hero-teksten stopper før knapperne. */
   .well--hero .well__body { padding-right: 104px; }
-  .well--hero .btn { max-width: 200px; }
+  .well--hero .btn { width: auto; display: inline-block; }
   /* Bandnavnet er langt: mindre grad, så "Electrical System" ikke presses. */
   .h--hero { font-size: clamp(25px, 7.4vw, 36px); }
   .hero__sub { font-size: 15px; margin-top: 14px; }
