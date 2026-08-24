@@ -6,7 +6,7 @@ const SITE = "https://theheartselectricalsystem.dk";
 
 const BOOKING = {
   name: "Jacob Salmon",
-  email: "jacob.salmon@icloud.com",
+  email: "hej@theheartselectricalsystem.dk",
   phone: "+45 61 30 28 04",
 };
 
