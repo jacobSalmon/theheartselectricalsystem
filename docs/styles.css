@@ -752,6 +752,7 @@ button { font: inherit; color: inherit; }
   .hdr__mob { display: flex; }
   .hdr { padding-block: 6px; }
   .hdr__logo img { height: 42px; }
+  .btn { width: auto; }
 
   /* Hero skifter til højformat. Videoen er 9:16, højden loftes så
      en stribe af næste sektion stadig er synlig. */
