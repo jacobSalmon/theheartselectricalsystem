@@ -70,15 +70,25 @@
     var restart = fig.querySelector("[data-restart]");
     var sound = fig.querySelector("[data-sound]");
     var bar = fig.querySelector(".well__prog i");
+    var loader = fig.querySelector("[data-loading]");
     var loaded = false;
+
+    function showLoader(on) {
+      if (loader) loader.hidden = !on;
+    }
 
     applyPoster(v);
 
     function load() {
       if (loaded) return;
+      showLoader(true);
       v.src = source(v);
       loaded = true;
     }
+
+    v.addEventListener("playing", function () { showLoader(false); });
+    v.addEventListener("waiting", function () { if (loaded) showLoader(true); });
+    v.addEventListener("error", function () { showLoader(false); });
 
     function reveal() {
       if (big) big.hidden = true;
@@ -180,6 +190,7 @@
       v.poster = poster;
       v.load();
       loaded = false;
+      showLoader(false);
       if (bar) bar.style.width = "0";
       if (reset && big) big.hidden = false;
       if (reset && ctrls) ctrls.hidden = true;

@@ -387,6 +387,7 @@ const UI = {
   members: { da: "Medlemmer", en: "Members" },
   alsoOn: { da: "Medvirkende på albummet: ", en: "Also on the album: " },
   playVideo: { da: "Afspil video", en: "Play video" },
+  loadingVideo: { da: "Loader video", en: "Loading video" },
   play: { da: "Afspil", en: "Play" },
   pause: { da: "Pause", en: "Pause" },
   restart: { da: "Tilbage til start", en: "Back to start" },

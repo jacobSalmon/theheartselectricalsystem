@@ -121,6 +121,7 @@ function videoWell(lang, o) {
     `<div class="well__box" style="--ar:${o.ratio || "16/9"}">` +
     `<video ${attrs}></video>` +
     '<span class="well__grad"></span>' +
+    `<div class="well__load" data-loading hidden><span class="well__spin"></span><span class="well__loadt">${esc(t("loadingVideo"))}</span></div>` +
     '<span class="well__prog"><i></i></span>' +
     `<button class="well__big" type="button" data-play aria-label="${esc(t("playVideo"))}">` +
     '<span class="well__tri"></span></button>' +
