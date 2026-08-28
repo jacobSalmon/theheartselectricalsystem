@@ -260,7 +260,8 @@ button { font: inherit; color: inherit; }
 .sec--cyan { background: var(--cyan-400); color: var(--ink-900); }
 .sec--cream { background: var(--cream-100); color: var(--ink-900); }
 .sec--orange { background: var(--orange-500); color: var(--ink-900); }
-.sec--cyan a:hover:not(.btn), .sec--cream a:hover:not(.btn), .sec--orange a:hover:not(.btn) { color: var(--cream-100); }
+.sec--cyan a:hover:not(.btn), .sec--orange a:hover:not(.btn) { color: var(--cream-100); }
+.sec--cream a:hover:not(.btn) { color: var(--orange-500); }
 
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gap); }
 .grid2--mid { align-items: center; }

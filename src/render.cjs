@@ -674,7 +674,6 @@ function shopPage(lang) {
 
 function contactPage(lang) {
   const t = (k) => C.UI[k][lang];
-  const tel = C.BOOKING.phone.replace(/\s/g, "");
   return (
     '<section class="sec sec--cream contact">' +
     "<div>" +
@@ -682,7 +681,7 @@ function contactPage(lang) {
     '<address class="contact__a">' +
     `${esc(C.BOOKING.name)}<br>` +
     `<a href="mailto:${esc(C.BOOKING.email)}">${esc(C.BOOKING.email)}</a><br>` +
-    `<a href="tel:${esc(tel)}">${esc(C.BOOKING.phone)}</a></address>` +
+    `${esc(C.BOOKING.phone)}</address>` +
     `<p class="contact__p">${esc(t("contactLede"))}</p>` +
     `<div class="btns btns--gap">${bookBtn(lang, "btn--warm")}</div>` +
     "</div>" +
