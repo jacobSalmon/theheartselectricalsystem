@@ -319,7 +319,7 @@ const PAGES = [
   {
     id: "epk",
     file: { da: "epk.html", en: "en/epk.html" },
-    nav: { da: "EPK", en: "EPK" },
+    nav: { da: "Presskit", en: "Presskit" },
     title: {
       da: "EPK — presse og arrangører | The Heart's Electrical System",
       en: "EPK — press and promoters | The Heart's Electrical System",
@@ -347,7 +347,7 @@ const PAGES = [
   {
     id: "booking",
     file: { da: "kontakt.html", en: "en/contact.html" },
-    nav: { da: "Kontakt", en: "Contact" },
+    nav: { da: "Booking", en: "Booking" },
     title: {
       da: "Kontakt og booking | The Heart's Electrical System",
       en: "Contact and booking | The Heart's Electrical System",
@@ -439,7 +439,7 @@ const UI = {
   },
   shortBio: { da: "Kort biografi", en: "Short biography" },
   press: { da: "Presse: ", en: "Press: " },
-  contact: { da: "Kontakt", en: "Contact" },
+  contact: { da: "Booking", en: "Booking" },
   contactLede: {
     da: "Skriv til os om booking, presse eller andet. Vi svarer så hurtigt vi kan.",
     en: "Write to us about booking, press or anything else. We answer as quickly as we can.",

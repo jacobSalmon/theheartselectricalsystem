@@ -593,6 +593,19 @@ function aboutPage(lang) {
     ).join("") +
     "</div>" +
     `<p class="mono mono--quiet">${esc(t("alsoOn") + C.GUESTS.join(" · "))}</p>` +
+    "</section>" +
+    '<section class="sec sec--tight">' +
+    `<p class="mono mono--wide">${esc(t("liveCaption"))}</p>` +
+    '<div class="livegrid">' +
+    C.MEDIA.live
+      .slice(0, 6)
+      .map(
+        (s) =>
+          `<img src="${esc(A(lang, s))}" alt="" loading="lazy" decoding="async">`
+      )
+      .join("") +
+    "</div>" +
+    `<p class="mono mono--quiet">${esc(t("photoCredit"))}</p>` +
     "</section>"
   );
 }
@@ -677,20 +690,7 @@ function contactPage(lang) {
     `<h2 class="h h--s">${esc(t("nlTitle"))}</h2>` +
     `<p class="contact__nlp">${esc(t("nlLede"))}</p>` +
     nlForm(lang, { formClass: "contact__nlf", msgClass: "fmsg--dark" }) +
-    "</div></section>" +
-    '<section class="sec sec--tight">' +
-    `<p class="mono mono--wide">${esc(t("liveCaption"))}</p>` +
-    '<div class="livegrid">' +
-    C.MEDIA.live
-      .slice(0, 6)
-      .map(
-        (s) =>
-          `<img src="${esc(A(lang, s))}" alt="" loading="lazy" decoding="async">`
-      )
-      .join("") +
-    "</div>" +
-    `<p class="mono mono--quiet">${esc(t("photoCredit"))}</p>` +
-    "</section>"
+    "</div></section>"
   );
 }
 
